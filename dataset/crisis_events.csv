@@ -1,0 +1,10 @@
+event_name,start_date,end_date,crisis_type,trigger_description,region
+1973 Oil Shock,1973-10-16,1974-03-18,Commodity/Energy Crisis,OPEC oil embargo in response to Western support for Israel in the Yom Kippur War,Global / Middle East
+Black Monday (1987),1987-10-19,1987-10-20,Stock Market Crash,Sudden market downturn accelerated by program trading and panic selling,Global
+1992 Black Wednesday,1992-09-16,1992-09-17,Currency Crisis,Speculative attack on the British pound forcing its withdrawal from the European Exchange Rate Mechanism,United Kingdom / Europe
+1997 Asian Financial Crisis,1997-07-02,1998-12-31,Currency & Banking Crisis,Devaluation of the Thai baht triggering speculative runs and capital flight across East Asia,East Asia
+Dot-com Bubble Burst,2000-03-10,2002-10-09,Stock Market Crash,Speculative tech valuation bubble pop combined with monetary policy tightening,Global
+2008 Great Financial Crisis,2007-08-09,2009-06-30,Systemic Financial Crisis,Subprime mortgage defaults leading to liquidity dry-ups and major investment bank collapses,Global
+Eurozone Debt Crisis,2009-12-08,2015-08-20,Sovereign Debt Crisis,Sovereign debt defaults and credit rating downgrades of southern European countries,Europe / Eurozone
+2020 COVID-19 Crash,2020-02-20,2020-04-07,Pandemic / Economic Shock,Global lockdowns and pandemic panic triggering extreme stock volatility and oil price drops,Global
+Great Depression (1929),1929-10-24,1939-09-01,Economic Depression,Wall Street crash of 1929 leading to widespread banking failures and industrial contraction,Global

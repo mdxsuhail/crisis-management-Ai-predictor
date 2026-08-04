@@ -1,0 +1,17 @@
+# Ignore large raw datasets
+dataset/abcnews-date-text.csv
+dataset/all_stocks_5yr.csv
+dataset/world_bank_development_indicators.csv
+dataset/BrentOilPrices.csv
+dataset/Covid-19 economy impact .csv
+dataset/individual_stocks_5yr/
+
+# Ignore processed data outputs (except the small summary table)
+processed/clean_data.csv
+
+# Python environment and cache
+__pycache__/
+*.pyc
+.venv/
+.streamlit/
+.DS_Store
