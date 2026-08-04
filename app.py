@@ -1,93 +1,71 @@
-import os
-import string
+import os, string
 import pandas as pd
 import numpy as np
 import streamlit as st
 import altair as alt
-from datetime import timedelta
 
 # ─── Page Config ───
-st.set_page_config(
-    page_title="Crisis Management AI Predictor",
-    page_icon="📊",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+st.set_page_config(page_title="Crisis Management AI Predictor", page_icon="📊", layout="wide")
 
-# ─── Paths ───
+# ─── Paths (relative to script) ───
 BASE = os.path.dirname(os.path.abspath(__file__))
-SUMMARY_PATH = os.path.join(BASE, "processed", "crisis_impact_summary.csv")
-CLEAN_DATA_PATH = os.path.join(BASE, "processed", "clean_data.csv")
-NEWS_PATH = os.path.join(BASE, "dataset", "abcnews-date-text.csv")
-CRISIS_PATH = os.path.join(BASE, "dataset", "crisis_events.csv")
+SUMMARY_PATH   = os.path.join(BASE, "processed", "crisis_impact_summary.csv")
+CLEAN_DATA_PATH= os.path.join(BASE, "processed", "clean_data.csv")
+NEWS_PATH      = os.path.join(BASE, "dataset",   "abcnews-date-text.csv")
+CRISIS_PATH    = os.path.join(BASE, "dataset",   "crisis_events.csv")
 
-# ─── Styling ───
-st.markdown("""
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    html, body, [class*="st-"] { font-family: 'Inter', sans-serif; }
-    .main-header {
-        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0d9488 100%);
-        padding: 30px 35px; border-radius: 14px; margin-bottom: 28px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    }
-    .main-header h1 { color: #f0fdfa; margin: 0; font-size: 2rem; font-weight: 700; }
-    .main-header p  { color: #99f6e4; margin: 6px 0 0 0; font-size: 1.05rem; }
-    .pred-card {
-        background: linear-gradient(135deg, #0f172a, #1e293b);
-        padding: 22px; border-radius: 12px; border-left: 5px solid #14b8a6;
-        margin-bottom: 16px;
-    }
-    .pred-card h3 { color: #f0fdfa; margin: 0 0 4px 0; font-size: 1.25rem; }
-    .pred-card .score { color: #5eead4; font-size: 14px; font-weight: 600; }
-    .dataset-card {
-        background: #1e293b; padding: 16px; border-radius: 10px;
-        border: 1px solid #334155; margin-bottom: 12px;
-    }
-    .dataset-card h4 { color: #e2e8f0; margin: 0 0 6px 0; }
-    .dataset-card p  { color: #94a3b8; margin: 0; font-size: 0.9rem; }
-    div[data-testid="stMetric"] {
-        background: #0f172a; padding: 12px; border-radius: 8px;
-        border: 1px solid #334155;
-    }
-</style>
-""", unsafe_allow_html=True)
+# ─── Custom CSS ───
+st.markdown("""<style>
+  .block-container { padding-top: 1rem; }
+  div[data-testid="stMetric"] {
+      background: #0f172a; border: 1px solid #334155;
+      padding: 14px 16px; border-radius: 10px;
+  }
+  div[data-testid="stMetric"] label { color: #94a3b8 !important; font-size: 0.82rem !important; }
+  div[data-testid="stMetric"] [data-testid="stMetricValue"] { color: #f0fdfa !important; font-size: 1.3rem !important; }
+  .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0d9488 100%);
+      padding: 28px 32px; border-radius: 14px; margin-bottom: 24px;
+  }
+  .hero h1 { color:#f0fdfa; margin:0; font-size:2rem; }
+  .hero p  { color:#99f6e4; margin:6px 0 0; font-size:1rem; }
+  .crisis-badge {
+      display:inline-block; padding:4px 12px; border-radius:20px;
+      font-size:0.78rem; font-weight:600; margin-right:6px; margin-bottom:4px;
+  }
+  .badge-oil   { background:#7c2d12; color:#fdba74; }
+  .badge-stock { background:#1e3a5f; color:#93c5fd; }
+  .badge-debt  { background:#4a1d96; color:#c4b5fd; }
+  .badge-curr  { background:#065f46; color:#6ee7b7; }
+  .badge-pan   { background:#7f1d1d; color:#fca5a5; }
+  .badge-other { background:#334155; color:#cbd5e1; }
+</style>""", unsafe_allow_html=True)
 
-st.markdown("""
-<div class="main-header">
-    <h1>📊 Crisis Management AI Predictor</h1>
-    <p>Describe any economic scenario — get matched historical crises, predicted impacts from real datasets</p>
-</div>
-""", unsafe_allow_html=True)
+# ─── Header ───
+st.markdown("""<div class="hero">
+  <h1>📊 Crisis Management AI Predictor</h1>
+  <p>Type any economic scenario → get matched historical crises, news signals, and predicted impacts from 6 real datasets</p>
+</div>""", unsafe_allow_html=True)
 
-# ─── Data Loading ───
+# ─── Data Loaders ───
 @st.cache_data
 def load_summary():
-    if os.path.exists(SUMMARY_PATH):
-        return pd.read_csv(SUMMARY_PATH)
-    return None
-
+    return pd.read_csv(SUMMARY_PATH) if os.path.exists(SUMMARY_PATH) else None
 @st.cache_data
 def load_clean():
-    if os.path.exists(CLEAN_DATA_PATH):
-        df = pd.read_csv(CLEAN_DATA_PATH, low_memory=False)
-        df['Date'] = pd.to_datetime(df['Date'])
-        return df
-    return None
-
+    if not os.path.exists(CLEAN_DATA_PATH): return None
+    df = pd.read_csv(CLEAN_DATA_PATH, low_memory=False)
+    df['Date'] = pd.to_datetime(df['Date'])
+    return df
 @st.cache_data
 def load_news():
-    if os.path.exists(NEWS_PATH):
-        df = pd.read_csv(NEWS_PATH)
-        df['Date'] = pd.to_datetime(df['publish_date'].astype(str), format="%Y%m%d", errors='coerce')
-        return df
-    return None
-
+    if not os.path.exists(NEWS_PATH): return None
+    df = pd.read_csv(NEWS_PATH)
+    df['Date'] = pd.to_datetime(df['publish_date'].astype(str), format="%Y%m%d", errors='coerce')
+    return df
 @st.cache_data
 def load_crises():
-    if os.path.exists(CRISIS_PATH):
-        return pd.read_csv(CRISIS_PATH)
-    return None
+    return pd.read_csv(CRISIS_PATH) if os.path.exists(CRISIS_PATH) else None
 
 df_summary = load_summary()
 df_clean   = load_clean()
@@ -95,394 +73,423 @@ df_news    = load_news()
 df_crises  = load_crises()
 
 # ─── NLP Helpers ───
-STOPWORDS = {
-    'and','or','in','the','a','of','to','for','with','on','at','by','from',
-    'an','is','are','was','were','be','been','being','this','that','these',
-    'those','it','its','about','as','but','not','has','had','have','very',
-    'will','can','could','would','should','may','might','shall','do','does',
-    'did','then','than','so','if','when','where','what','which','who','how'
-}
+STOP = {'and','or','in','the','a','of','to','for','with','on','at','by','from','an',
+        'is','are','was','were','be','been','being','this','that','it','its','about',
+        'as','but','not','has','had','have','very','will','can','could','would','should',
+        'may','might','do','does','did','then','than','so','if','when','where','what',
+        'which','who','how','there','their','they','he','she','we','our','us','my','your'}
 
 def tokenize(text):
-    if not isinstance(text, str):
-        return set()
-    text = text.lower().replace('/', ' ').replace('-', ' ').replace(',', ' ')
-    text = text.translate(str.maketrans('', '', string.punctuation))
-    return {w for w in text.split() if w not in STOPWORDS and len(w) > 1}
+    if not isinstance(text, str): return set()
+    t = text.lower().replace('/',' ').replace('-',' ').replace(',',' ')
+    t = t.translate(str.maketrans('', '', string.punctuation))
+    return {w for w in t.split() if w not in STOP and len(w) > 1}
 
 def jaccard(a, b):
-    if not a or not b:
-        return 0.0
+    if not a or not b: return 0.0
     return len(a & b) / len(a | b)
 
-def find_similar_crises(query_text, df, top_n=3):
-    q_tokens = tokenize(query_text)
-    scores = []
-    for _, row in df.iterrows():
-        combined = f"{row['event_name']} {row['crisis_type']} {row.get('trigger_description','')} {row['region']}"
-        d_tokens = tokenize(combined)
-        sim = jaccard(q_tokens, d_tokens)
-        scores.append((sim, row))
-    scores.sort(key=lambda x: x[0], reverse=True)
-    return scores[:top_n]
+def badge_class(crisis_type):
+    t = str(crisis_type).lower()
+    if 'oil' in t or 'commodity' in t or 'energy' in t: return 'badge-oil'
+    if 'stock' in t or 'bubble' in t or 'asset' in t: return 'badge-stock'
+    if 'debt' in t or 'sovereign' in t: return 'badge-debt'
+    if 'currency' in t: return 'badge-curr'
+    if 'pandemic' in t or 'covid' in t: return 'badge-pan'
+    return 'badge-other'
 
-def search_news(df_news, query_text, top_n=5):
-    words = [w.strip().lower() for w in query_text.split() if len(w.strip()) > 1]
-    if not words:
-        return pd.DataFrame()
-    mask = np.ones(len(df_news), dtype=bool)
-    for w in words:
-        mask &= df_news['headline_text'].str.contains(w, case=False, na=False)
-    matched = df_news[mask]
-    if matched.empty:
-        return pd.DataFrame()
-    daily = matched.groupby('Date').agg(
-        headline_count=('headline_text', 'size'),
-        sample_headline=('headline_text', 'first')
-    ).reset_index().sort_values('headline_count', ascending=False)
-    return daily.head(top_n)
+def fmt(val, suffix='%', decimals=1, prefix=''):
+    if pd.isna(val): return "—"
+    return f"{prefix}{val:+.{decimals}f}{suffix}" if val != 0 else f"{prefix}0{suffix}"
 
-def get_indicators_for_date(df_clean, target_date):
-    if df_clean is None:
-        return None
-    diffs = (df_clean['Date'] - target_date).abs()
-    return df_clean.loc[diffs.idxmin()]
+def fmt_abs(val, suffix='', decimals=2, prefix='$'):
+    if pd.isna(val): return "—"
+    return f"{prefix}{val:,.{decimals}f}{suffix}"
 
 # ─── Sidebar ───
-st.sidebar.header("🔍 Your Scenario")
+st.sidebar.markdown("### 🔍 Describe Your Scenario")
 user_input = st.sidebar.text_area(
-    "Describe the current crisis or economic situation:",
-    placeholder="e.g. oil price shock due to geopolitical conflict, global supply chain disruption, currency devaluation in emerging markets",
-    height=120
+    "What is happening?",
+    placeholder="e.g. oil prices crashing due to oversupply, trade war between major economies, pandemic lockdowns",
+    height=100
 )
-st.sidebar.markdown("---")
-st.sidebar.header("⚙️ Settings")
-num_crises = st.sidebar.slider("Number of similar crises to find", 1, 5, 3)
-num_news_dates = st.sidebar.slider("Number of peak news dates", 1, 10, 5)
+num_matches = st.sidebar.slider("Similar crises to find", 1, 5, 3)
+num_news    = st.sidebar.slider("Peak news dates to show", 1, 10, 5)
 
-# ─── Sidebar: Dataset Overview ───
 st.sidebar.markdown("---")
-st.sidebar.header("📁 Datasets Loaded")
-datasets_status = {
-    "Crisis Impact Summary": df_summary is not None,
-    "Clean Daily Timeline": df_clean is not None,
-    "ABC News Headlines (1.2M)": df_news is not None,
-    "Crisis Events Template": df_crises is not None,
-}
-for name, ok in datasets_status.items():
-    icon = "✅" if ok else "❌"
-    st.sidebar.markdown(f"{icon} {name}")
+st.sidebar.markdown("### 📁 Data Status")
+checks = [
+    ("20 Historical Crises", df_crises is not None),
+    ("Daily Timeline (11K rows)", df_clean is not None),
+    ("1.2M News Headlines", df_news is not None),
+    ("Impact Summary (20 crises)", df_summary is not None),
+]
+for label, ok in checks:
+    st.sidebar.markdown(f"{'✅' if ok else '❌'} {label}")
 
-# ─── Main Content ───
+# ═══════════════════════════════════════════════
+# MODE 1: NO INPUT → Show Dataset Explorer
+# ═══════════════════════════════════════════════
 if not user_input:
-    # Show dataset explorer when no input
-    st.markdown("### 📁 Datasets Overview")
-    st.info("👈 **Enter a scenario description in the sidebar** to get AI-powered crisis predictions. Below is an overview of the loaded datasets.")
+    st.info("👈 **Type a scenario in the sidebar** to get predictions. Below is a preview of all loaded datasets.")
 
-    tab_crisis, tab_timeline, tab_news, tab_indicators = st.tabs([
-        "📋 Crisis Events (20)", "📈 Daily Timeline", "📰 News Headlines", "🌍 World Bank & More"
-    ])
+    t1, t2, t3, t4 = st.tabs(["📋 Crisis Events", "📈 Economic Timeline", "📰 News Headlines", "📊 Impact Analysis"])
 
-    with tab_crisis:
+    with t1:
         if df_crises is not None:
-            st.markdown("#### Historical Crisis Events Database")
-            st.dataframe(df_crises, use_container_width=True, height=500)
-            st.caption(f"Total: {len(df_crises)} crisis events with dates, types, triggers, and regions")
+            st.markdown(f"**{len(df_crises)} historical crises** from 1929 to 2020 — each with type, trigger, dates and region.")
+            for _, cr in df_crises.iterrows():
+                bc = badge_class(cr['crisis_type'])
+                st.markdown(f"""
+                <div style="background:#1e293b;padding:14px 18px;border-radius:10px;margin-bottom:10px;border-left:4px solid #14b8a6;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span style="color:#f0fdfa;font-size:1.05rem;font-weight:600;">{cr['event_name']}</span>
+                    <span class="crisis-badge {bc}">{cr['crisis_type']}</span>
+                  </div>
+                  <div style="color:#94a3b8;font-size:0.85rem;margin-top:6px;">
+                    📅 {cr['start_date']} → {cr['end_date']} &nbsp;|&nbsp; 🌍 {cr['region']}
+                  </div>
+                  <div style="color:#cbd5e1;font-size:0.85rem;margin-top:4px;">{cr['trigger_description']}</div>
+                </div>""", unsafe_allow_html=True)
         else:
-            st.warning("Crisis events CSV not found.")
+            st.warning("Crisis events file not found.")
 
-    with tab_timeline:
+    with t2:
         if df_clean is not None:
-            st.markdown("#### Merged Daily Economic Timeline")
-            st.markdown(f"**Date Range:** `{df_clean['Date'].min().strftime('%Y-%m-%d')}` → `{df_clean['Date'].max().strftime('%Y-%m-%d')}`  |  **Rows:** {len(df_clean):,}  |  **Columns:** {len(df_clean.columns)}")
-            col_list = [c for c in df_clean.columns if c != 'Date']
-            selected_cols = st.multiselect("Select columns to display:", col_list, default=['brent_oil_price', 'market_avg_close', 'wb_inflation_annual%', 'wb_GDP_current_US'])
-            if selected_cols:
-                st.dataframe(df_clean[['Date'] + selected_cols].dropna(subset=selected_cols, how='all').tail(100), use_container_width=True, height=400)
-        else:
-            st.warning("Clean data CSV not found. Run `python clean_and_merge.py` first.")
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Total Rows", f"{len(df_clean):,}")
+            c2.metric("Date Range", f"{df_clean['Date'].min().strftime('%Y')}–{df_clean['Date'].max().strftime('%Y')}")
+            c3.metric("Columns", f"{len(df_clean.columns)}")
 
-    with tab_news:
+            st.markdown("**Select indicators to explore:**")
+            nice_cols = {
+                'brent_oil_price': '🛢️ Brent Oil Price',
+                'market_avg_close': '📈 S&P 500 Avg Close',
+                'wb_inflation_annual%': '💹 Inflation Rate',
+                'wb_GDP_current_US': '🏦 Global GDP',
+                'african_crises_exch_usd': '💱 Exchange Rate (USD)',
+                'african_crises_systemic_crisis': '⚠️ Systemic Crisis Count',
+                'news_headline_count': '📰 Daily News Count',
+            }
+            chosen = st.multiselect("Indicators", list(nice_cols.keys()),
+                                    default=['brent_oil_price', 'market_avg_close', 'wb_inflation_annual%'],
+                                    format_func=lambda x: nice_cols.get(x, x))
+            if chosen:
+                plot_df = df_clean[['Date'] + chosen].dropna(subset=chosen, how='all')
+                melted = plot_df.melt(id_vars='Date', var_name='Indicator', value_name='Value')
+                melted['Indicator'] = melted['Indicator'].map(nice_cols)
+                line_chart = alt.Chart(melted).mark_line(strokeWidth=1.5).encode(
+                    x=alt.X('Date:T', title=None),
+                    y=alt.Y('Value:Q', title=None, scale=alt.Scale(zero=False)),
+                    color=alt.Color('Indicator:N', legend=alt.Legend(orient='bottom', title=None)),
+                    tooltip=['Date:T', 'Indicator:N', alt.Tooltip('Value:Q', format=',.2f')]
+                ).properties(height=350).interactive()
+                st.altair_chart(line_chart, use_container_width=True)
+
+                st.markdown("**Raw data (last 50 rows):**")
+                st.dataframe(plot_df.tail(50), use_container_width=True, height=250)
+        else:
+            st.warning("Run `python clean_and_merge.py` first.")
+
+    with t3:
         if df_news is not None:
-            st.markdown("#### ABC News Headlines Dataset")
-            st.markdown(f"**Total Headlines:** {len(df_news):,}  |  **Date Range:** `{df_news['Date'].min().strftime('%Y-%m-%d')}` → `{df_news['Date'].max().strftime('%Y-%m-%d')}`")
-            st.dataframe(df_news[['Date', 'headline_text']].head(200), use_container_width=True, height=400)
+            c1, c2 = st.columns(2)
+            c1.metric("Total Headlines", f"{len(df_news):,}")
+            c2.metric("Date Range", f"{df_news['Date'].min().strftime('%Y-%m-%d')} → {df_news['Date'].max().strftime('%Y-%m-%d')}")
+            quick = st.text_input("🔍 Quick search headlines:", placeholder="e.g. oil, war, pandemic, market crash")
+            display_df = df_news[['Date', 'headline_text']].copy()
+            if quick:
+                mask = display_df['headline_text'].str.contains(quick, case=False, na=False)
+                display_df = display_df[mask]
+                st.caption(f"Showing {len(display_df):,} matching headlines")
+            st.dataframe(display_df.head(300), use_container_width=True, height=400)
         else:
             st.warning("ABC News headlines CSV not found.")
 
-    with tab_indicators:
+    with t4:
         if df_summary is not None:
-            st.markdown("#### Crisis Impact Summary (Pre-computed)")
-            st.dataframe(df_summary, use_container_width=True, height=500)
-            st.caption("Shows 6-month and 12-month changes in stocks, oil, inflation, and currency after each crisis start date.")
+            st.markdown("**Pre-computed 6-month and 12-month changes after each crisis start date:**")
+            display_cols = ['event_name', 'crisis_type', 'start_date',
+                           'brent_oil_price_change_6m', 'brent_oil_price_change_12m',
+                           'market_avg_close_change_6m', 'market_avg_close_change_12m',
+                           'wb_inflation_annual%_change_6m', 'wb_inflation_annual%_change_12m',
+                           'african_crises_exch_usd_change_6m', 'african_crises_exch_usd_change_12m']
+            avail = [c for c in display_cols if c in df_summary.columns]
+            styled = df_summary[avail].style.format({
+                c: '{:+.1f}' for c in avail if 'change' in c
+            }, na_rep='—')
+            st.dataframe(styled, use_container_width=True, height=500)
         else:
-            st.warning("Impact summary not found. Run `python analyze_crises.py` first.")
+            st.warning("Run `python analyze_crises.py` first.")
 
+# ═══════════════════════════════════════════════
+# MODE 2: USER INPUT → Prediction Mode
+# ═══════════════════════════════════════════════
 else:
-    # ─── PREDICTION MODE ───
     st.markdown(f"### 🔮 Predictions for: *\"{user_input}\"*")
 
-    with st.spinner("Matching your scenario against historical crises and 1.2M news headlines..."):
-        # ── Section 1: Similar Historical Crises ──
-        similar = []
-        if df_summary is not None:
-            similar = find_similar_crises(user_input, df_summary, top_n=num_crises)
+    # ── Compute matches ──
+    q_tokens = tokenize(user_input)
+    similar = []
+    if df_summary is not None:
+        for _, row in df_summary.iterrows():
+            combined = f"{row['event_name']} {row['crisis_type']} {row['region']}"
+            sim = jaccard(q_tokens, tokenize(combined))
+            similar.append((sim, row))
+        similar.sort(key=lambda x: x[0], reverse=True)
+        similar = similar[:num_matches]
 
-        # ── Section 2: News Headline Matches ──
-        news_peaks = pd.DataFrame()
-        if df_news is not None:
-            news_peaks = search_news(df_news, user_input, top_n=num_news_dates)
+    news_peaks = pd.DataFrame()
+    if df_news is not None:
+        words = [w.strip().lower() for w in user_input.split() if len(w.strip()) > 1]
+        if words:
+            mask = np.ones(len(df_news), dtype=bool)
+            for w in words:
+                mask &= df_news['headline_text'].str.contains(w, case=False, na=False)
+            matched = df_news[mask]
+            if not matched.empty:
+                news_peaks = matched.groupby('Date').agg(
+                    count=('headline_text','size'),
+                    sample=('headline_text','first')
+                ).reset_index().sort_values('count', ascending=False).head(num_news)
 
-    # ═══ RESULTS ═══
-    result_tab1, result_tab2, result_tab3 = st.tabs([
-        "🏛️ Similar Historical Crises", "📰 News Headline Analysis", "📊 Predicted Impact Summary"
+    # ── Results Tabs ──
+    tab_crisis, tab_news, tab_predict = st.tabs([
+        f"🏛️ {len(similar)} Matched Crises",
+        f"📰 {len(news_peaks)} News Peaks",
+        "📊 Predicted Impact"
     ])
 
-    # ── Tab 1: Similar Historical Crises ──
-    with result_tab1:
+    # ═══ TAB 1: Matched Crises ═══
+    with tab_crisis:
         if not similar:
-            st.warning("No crisis data available for matching.")
+            st.warning("No crisis data loaded.")
         else:
-            for idx, (score, row) in enumerate(similar):
-                event_name = row['event_name']
-                st.markdown(f"""
-                <div class="pred-card">
-                    <h3>#{idx+1} — {event_name}</h3>
-                    <span class="score">Match Score: {score*100:.1f}% &nbsp;|&nbsp; Type: {row['crisis_type']} &nbsp;|&nbsp; Region: {row['region']} &nbsp;|&nbsp; Start: {row['start_date']}</span>
-                </div>
-                """, unsafe_allow_html=True)
+            for i, (score, row) in enumerate(similar):
+                name = row['event_name']
+                bc = badge_class(row['crisis_type'])
 
-                col_metrics, col_chart = st.columns([1, 2])
+                st.markdown(f"""<div style="background:#1e293b;padding:16px 20px;border-radius:12px;
+                    margin-bottom:6px;border-left:5px solid #14b8a6;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span style="color:#f0fdfa;font-size:1.15rem;font-weight:700;">#{i+1} {name}</span>
+                    <span style="color:#5eead4;font-weight:600;font-size:0.95rem;">{score*100:.0f}% match</span>
+                  </div>
+                  <div style="margin-top:6px;">
+                    <span class="crisis-badge {bc}">{row['crisis_type']}</span>
+                    <span style="color:#94a3b8;font-size:0.85rem;">📅 {row['start_date']} &nbsp;|&nbsp; 🌍 {row['region']}</span>
+                  </div>
+                </div>""", unsafe_allow_html=True)
 
-                with col_metrics:
-                    m1, m2 = st.columns(2)
-                    with m1:
-                        val = row.get('brent_oil_price_change_6m')
-                        st.metric("Oil Price (6m)", f"{val:+.1f}%" if pd.notnull(val) else "N/A")
-                        val = row.get('market_avg_close_change_6m')
-                        st.metric("Stocks (6m)", f"{val:+.1f}%" if pd.notnull(val) else "N/A")
-                    with m2:
-                        val = row.get('wb_inflation_annual%_change_6m')
-                        st.metric("Inflation (6m)", f"{val:+.2f} pp" if pd.notnull(val) else "N/A")
-                        val = row.get('african_crises_exch_usd_change_6m')
-                        st.metric("Currency (6m)", f"{val:+.1f}%" if pd.notnull(val) else "N/A")
+                # Metric cards in 4 columns
+                m1, m2, m3, m4 = st.columns(4)
+                with m1:
+                    v6 = row.get('brent_oil_price_change_6m')
+                    v12 = row.get('brent_oil_price_change_12m')
+                    st.metric("🛢️ Oil (6m)", fmt(v6))
+                    st.metric("🛢️ Oil (12m)", fmt(v12))
+                with m2:
+                    v6 = row.get('market_avg_close_change_6m')
+                    v12 = row.get('market_avg_close_change_12m')
+                    st.metric("📈 Stocks (6m)", fmt(v6))
+                    st.metric("📈 Stocks (12m)", fmt(v12))
+                with m3:
+                    v6 = row.get('wb_inflation_annual%_change_6m')
+                    v12 = row.get('wb_inflation_annual%_change_12m')
+                    st.metric("💹 Inflation (6m)", fmt(v6, ' pp', 2))
+                    st.metric("💹 Inflation (12m)", fmt(v12, ' pp', 2))
+                with m4:
+                    v6 = row.get('african_crises_exch_usd_change_6m')
+                    v12 = row.get('african_crises_exch_usd_change_12m')
+                    st.metric("💱 Currency (6m)", fmt(v6))
+                    st.metric("💱 Currency (12m)", fmt(v12))
 
-                with col_chart:
-                    metrics_data = []
-                    metric_map = {
-                        'Stock Prices': ('market_avg_close_change_6m', 'market_avg_close_change_12m'),
-                        'Brent Oil': ('brent_oil_price_change_6m', 'brent_oil_price_change_12m'),
-                        'Inflation': ('wb_inflation_annual%_change_6m', 'wb_inflation_annual%_change_12m'),
-                        'Currency': ('african_crises_exch_usd_change_6m', 'african_crises_exch_usd_change_12m'),
-                    }
-                    for label, (col_6m, col_12m) in metric_map.items():
-                        v6 = row.get(col_6m)
-                        v12 = row.get(col_12m)
-                        if pd.notnull(v6):
-                            metrics_data.append({'Indicator': label, 'Change': v6, 'Period': '6 Months'})
-                        if pd.notnull(v12):
-                            metrics_data.append({'Indicator': label, 'Change': v12, 'Period': '12 Months'})
+                # Mini chart
+                chart_rows = []
+                pairs = [
+                    ('Oil Price', 'brent_oil_price_change_6m', 'brent_oil_price_change_12m'),
+                    ('Stocks',    'market_avg_close_change_6m','market_avg_close_change_12m'),
+                    ('Inflation', 'wb_inflation_annual%_change_6m','wb_inflation_annual%_change_12m'),
+                    ('Currency',  'african_crises_exch_usd_change_6m','african_crises_exch_usd_change_12m'),
+                ]
+                for label, c6, c12 in pairs:
+                    if pd.notna(row.get(c6)):
+                        chart_rows.append({'Indicator': label, 'Period': '6 Months', 'Change': row[c6]})
+                    if pd.notna(row.get(c12)):
+                        chart_rows.append({'Indicator': label, 'Period': '12 Months', 'Change': row[c12]})
 
-                    if metrics_data:
-                        cdf = pd.DataFrame(metrics_data)
-                        chart = alt.Chart(cdf).mark_bar(cornerRadiusTopLeft=4, cornerRadiusTopRight=4).encode(
-                            x=alt.X('Period:N', title=None, axis=alt.Axis(labelAngle=0)),
-                            y=alt.Y('Change:Q', title='Change (% / pp)'),
-                            color=alt.Color('Period:N', scale=alt.Scale(
-                                domain=['6 Months', '12 Months'],
-                                range=['#14b8a6', '#0d9488']
-                            )),
-                            column=alt.Column('Indicator:N', title=None,
-                                header=alt.Header(labelFontSize=12, labelColor='#e2e8f0')),
-                            tooltip=['Indicator', 'Period', alt.Tooltip('Change:Q', format='.2f')]
-                        ).properties(width=130, height=220).configure_view(stroke=None)
-                        st.altair_chart(chart, use_container_width=False)
-                    else:
-                        st.info("No indicator data available for this crisis period.")
+                if chart_rows:
+                    cdf = pd.DataFrame(chart_rows)
+                    ch = alt.Chart(cdf).mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3).encode(
+                        x=alt.X('Period:N', title=None, axis=alt.Axis(labelAngle=0)),
+                        y=alt.Y('Change:Q', title='Change (%)'),
+                        color=alt.condition(
+                            alt.datum.Change > 0, alt.value('#10b981'), alt.value('#ef4444')
+                        ),
+                        column=alt.Column('Indicator:N', title=None,
+                            header=alt.Header(labelFontSize=12, labelColor='#cbd5e1')),
+                        tooltip=['Indicator','Period', alt.Tooltip('Change:Q', format='+.2f')]
+                    ).properties(width=120, height=180)
+                    st.altair_chart(ch, use_container_width=False)
 
-                # Expandable detail
-                with st.expander(f"📄 View all data for {event_name}"):
-                    st.dataframe(pd.DataFrame([row]).T.rename(columns={row.name: "Value"}), use_container_width=True)
-
+                with st.expander(f"📄 Full data for {name}"):
+                    detail_df = pd.DataFrame([row]).T.reset_index()
+                    detail_df.columns = ['Field', 'Value']
+                    detail_df = detail_df[detail_df['Value'].notna()]
+                    st.dataframe(detail_df, use_container_width=True, hide_index=True)
                 st.markdown("---")
 
-    # ── Tab 2: News Headline Analysis ──
-    with result_tab2:
+    # ═══ TAB 2: News Headlines ═══
+    with tab_news:
         if news_peaks.empty:
-            st.warning(f"No news headlines found matching: **{user_input}**. Try broader keywords like 'oil', 'market', 'debt', 'war'.")
+            st.warning(f"No news headlines matched **\"{user_input}\"**. Try simpler keywords like `oil`, `war`, `debt`, `market`.")
         else:
-            st.success(f"Found matching headlines on **{len(news_peaks)}** peak dates.")
+            st.success(f"Found **{len(news_peaks)}** peak coverage dates in 1.2M headlines.")
+            for _, nrow in news_peaks.iterrows():
+                dt = nrow['Date']
+                cnt = nrow['count']
 
-            for idx, (_, nrow) in enumerate(news_peaks.iterrows()):
-                target_date = nrow['Date']
-                headline_cnt = nrow['headline_count']
-                sample = nrow['sample_headline']
+                st.markdown(f"""<div style="background:#1e293b;padding:14px 18px;border-radius:10px;
+                    margin-bottom:6px;border-left:4px solid #f59e0b;">
+                  <span style="color:#fbbf24;font-weight:700;font-size:1.05rem;">📅 {dt.strftime('%B %d, %Y')}</span>
+                  <span style="color:#94a3b8;margin-left:12px;">{cnt} matching headlines</span>
+                </div>""", unsafe_allow_html=True)
 
-                indicators = get_indicators_for_date(df_clean, target_date)
+                ind = None
+                if df_clean is not None:
+                    diffs = (df_clean['Date'] - dt).abs()
+                    ind = df_clean.loc[diffs.idxmin()]
 
-                st.markdown(f"""
-                <div class="pred-card">
-                    <h3>📅 {target_date.strftime('%B %d, %Y')}</h3>
-                    <span class="score">{headline_cnt} matching headlines &nbsp;|&nbsp; Sample: "{sample[:80]}..."</span>
-                </div>
-                """, unsafe_allow_html=True)
-
-                if indicators is not None:
+                if ind is not None:
                     c1, c2, c3, c4, c5 = st.columns(5)
                     with c1:
-                        v = indicators.get('brent_oil_price')
-                        st.metric("🛢️ Brent Oil", f"${v:.2f}" if pd.notnull(v) else "N/A")
+                        st.metric("🛢️ Oil Price", fmt_abs(ind.get('brent_oil_price')))
                     with c2:
-                        v = indicators.get('market_avg_close')
-                        st.metric("📈 S&P 500 Avg", f"${v:.2f}" if pd.notnull(v) else "N/A")
+                        st.metric("📈 S&P 500", fmt_abs(ind.get('market_avg_close')))
                     with c3:
-                        v = indicators.get('wb_inflation_annual%')
-                        st.metric("💹 Inflation", f"{v:.2f}%" if pd.notnull(v) else "N/A")
+                        v = ind.get('wb_inflation_annual%')
+                        st.metric("💹 Inflation", f"{v:.2f}%" if pd.notna(v) else "—")
                     with c4:
-                        v = indicators.get('wb_GDP_current_US')
-                        st.metric("🏦 World GDP", f"${v/1e12:.1f}T" if pd.notnull(v) else "N/A")
+                        v = ind.get('wb_GDP_current_US')
+                        st.metric("🏦 GDP", f"${v/1e12:.1f}T" if pd.notna(v) else "—")
                     with c5:
-                        v = indicators.get('african_crises_systemic_crisis')
-                        st.metric("⚠️ Systemic Crises", f"{int(v)} countries" if pd.notnull(v) else "N/A")
+                        v = ind.get('african_crises_systemic_crisis')
+                        st.metric("⚠️ Crises", f"{int(v)}" if pd.notna(v) else "—")
 
-                    # COVID row if applicable
-                    cov = indicators.get('covid_impact_avg_stringency_index')
-                    if pd.notnull(cov) and cov > 0:
-                        cc1, cc2, cc3 = st.columns(3)
+                    # COVID data if present
+                    cov = ind.get('covid_impact_avg_stringency_index')
+                    if pd.notna(cov) and cov > 0:
+                        cc1, cc2 = st.columns(2)
                         with cc1:
                             st.metric("🦠 COVID Stringency", f"{cov:.1f}")
                         with cc2:
-                            mob = indicators.get('covid_impact_avg_mobility')
-                            st.metric("🚶 COVID Mobility", f"{mob:.1f}" if pd.notnull(mob) else "N/A")
-                        with cc3:
-                            inv = indicators.get('covid_impact_avg_investment_shock_short')
-                            st.metric("📉 Investment Shock", f"{inv:.1f}%" if pd.notnull(inv) else "N/A")
+                            mob = ind.get('covid_impact_avg_mobility')
+                            st.metric("🚶 Mobility", f"{mob:.1f}" if pd.notna(mob) else "—")
 
-                    # Show matching headlines on this date
-                    with st.expander(f"📰 View all {headline_cnt} headlines on {target_date.strftime('%Y-%m-%d')}"):
-                        day_headlines = df_news[df_news['Date'] == target_date]['headline_text'].tolist()
-                        for h in day_headlines[:20]:
-                            st.markdown(f"- {h.capitalize()}")
-                        if len(day_headlines) > 20:
-                            st.caption(f"...and {len(day_headlines)-20} more")
-
+                with st.expander(f"📰 Headlines on {dt.strftime('%Y-%m-%d')} ({cnt} total)"):
+                    day_h = df_news[df_news['Date'] == dt]['headline_text'].tolist()
+                    for h in day_h[:15]:
+                        st.markdown(f"- {h.capitalize()}")
+                    if len(day_h) > 15:
+                        st.caption(f"…and {len(day_h)-15} more")
                 st.markdown("")
 
-    # ── Tab 3: Predicted Impact Summary ──
-    with result_tab3:
-        st.markdown("### Predicted Impact Based on Historical Patterns")
-        st.markdown(f"Based on the top **{len(similar)}** most similar historical crises to your scenario, here is the predicted range of impacts:")
+    # ═══ TAB 3: Predicted Impact ═══
+    with tab_predict:
+        if not similar:
+            st.warning("No historical data to generate predictions.")
+        else:
+            st.markdown("### 🎯 Weighted Prediction from Matched Crises")
+            st.caption("Higher-similarity crises contribute more weight to the prediction.")
 
-        if similar:
-            # Build aggregate prediction table
-            pred_rows = []
+            # Build comparison table
+            rows = []
             for score, row in similar:
-                pred_rows.append({
+                rows.append({
                     'Crisis': row['event_name'],
-                    'Match %': round(score * 100, 1),
-                    'Oil 6m%': row.get('brent_oil_price_change_6m'),
-                    'Oil 12m%': row.get('brent_oil_price_change_12m'),
-                    'Stock 6m%': row.get('market_avg_close_change_6m'),
-                    'Stock 12m%': row.get('market_avg_close_change_12m'),
-                    'Inflation 6m (pp)': row.get('wb_inflation_annual%_change_6m'),
-                    'Inflation 12m (pp)': row.get('wb_inflation_annual%_change_12m'),
-                    'Currency 6m%': row.get('african_crises_exch_usd_change_6m'),
-                    'Currency 12m%': row.get('african_crises_exch_usd_change_12m'),
+                    'Match': f"{score*100:.0f}%",
+                    'Oil 6m': fmt(row.get('brent_oil_price_change_6m')),
+                    'Oil 12m': fmt(row.get('brent_oil_price_change_12m')),
+                    'Stocks 6m': fmt(row.get('market_avg_close_change_6m')),
+                    'Stocks 12m': fmt(row.get('market_avg_close_change_12m')),
+                    'Infl 6m': fmt(row.get('wb_inflation_annual%_change_6m'), ' pp', 2),
+                    'Infl 12m': fmt(row.get('wb_inflation_annual%_change_12m'), ' pp', 2),
+                    'FX 6m': fmt(row.get('african_crises_exch_usd_change_6m')),
+                    'FX 12m': fmt(row.get('african_crises_exch_usd_change_12m')),
                 })
-            pred_df = pd.DataFrame(pred_rows)
-            st.dataframe(pred_df.style.format({
-                'Match %': '{:.1f}',
-                'Oil 6m%': '{:+.1f}', 'Oil 12m%': '{:+.1f}',
-                'Stock 6m%': '{:+.1f}', 'Stock 12m%': '{:+.1f}',
-                'Inflation 6m (pp)': '{:+.2f}', 'Inflation 12m (pp)': '{:+.2f}',
-                'Currency 6m%': '{:+.1f}', 'Currency 12m%': '{:+.1f}',
-            }, na_rep="—"), use_container_width=True)
+            st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
-            # Weighted average prediction
+            # Compute weighted averages
             st.markdown("---")
-            st.markdown("### 🎯 Weighted Average Prediction")
-            st.caption("Averages weighted by match score — higher-similarity crises contribute more.")
+            st.markdown("### 📈 Weighted Average Forecast")
 
-            weight_cols = ['Oil 6m%', 'Oil 12m%', 'Stock 6m%', 'Stock 12m%',
-                          'Inflation 6m (pp)', 'Inflation 12m (pp)', 'Currency 6m%', 'Currency 12m%']
-            weights = pred_df['Match %'].values
-            w_sum = weights.sum()
+            weight_keys = [
+                ('🛢️ Oil Price',  'brent_oil_price_change_6m',        'brent_oil_price_change_12m'),
+                ('📈 Stocks',     'market_avg_close_change_6m',       'market_avg_close_change_12m'),
+                ('💹 Inflation',  'wb_inflation_annual%_change_6m',   'wb_inflation_annual%_change_12m'),
+                ('💱 Currency',   'african_crises_exch_usd_change_6m','african_crises_exch_usd_change_12m'),
+            ]
+            weights = np.array([s for s, _ in similar])
 
-            wa_results = {}
-            for col in weight_cols:
-                vals = pred_df[col].values
-                valid_mask = ~pd.isna(vals)
-                if valid_mask.any():
-                    wa = np.average(vals[valid_mask].astype(float), weights=weights[valid_mask])
-                    wa_results[col] = wa
-                else:
-                    wa_results[col] = None
+            wa_6m = {}
+            wa_12m = {}
+            for label, col6, col12 in weight_keys:
+                vals6  = np.array([r.get(col6)  for _, r in similar], dtype=float)
+                vals12 = np.array([r.get(col12) for _, r in similar], dtype=float)
+                m6  = ~np.isnan(vals6)
+                m12 = ~np.isnan(vals12)
+                wa_6m[label]  = np.average(vals6[m6],  weights=weights[m6])  if m6.any()  else None
+                wa_12m[label] = np.average(vals12[m12], weights=weights[m12]) if m12.any() else None
 
-            c1, c2, c3, c4 = st.columns(4)
-            with c1:
-                v = wa_results.get('Oil 6m%')
-                st.metric("🛢️ Oil Price (6m)", f"{v:+.1f}%" if v is not None else "—")
-                v = wa_results.get('Oil 12m%')
-                st.metric("🛢️ Oil Price (12m)", f"{v:+.1f}%" if v is not None else "—")
-            with c2:
-                v = wa_results.get('Stock 6m%')
-                st.metric("📈 Stocks (6m)", f"{v:+.1f}%" if v is not None else "—")
-                v = wa_results.get('Stock 12m%')
-                st.metric("📈 Stocks (12m)", f"{v:+.1f}%" if v is not None else "—")
-            with c3:
-                v = wa_results.get('Inflation 6m (pp)')
-                st.metric("💹 Inflation (6m)", f"{v:+.2f} pp" if v is not None else "—")
-                v = wa_results.get('Inflation 12m (pp)')
-                st.metric("💹 Inflation (12m)", f"{v:+.2f} pp" if v is not None else "—")
-            with c4:
-                v = wa_results.get('Currency 6m%')
-                st.metric("💱 Currency (6m)", f"{v:+.1f}%" if v is not None else "—")
-                v = wa_results.get('Currency 12m%')
-                st.metric("💱 Currency (12m)", f"{v:+.1f}%" if v is not None else "—")
+            cols = st.columns(4)
+            for idx, (label, _, _) in enumerate(weight_keys):
+                with cols[idx]:
+                    v6  = wa_6m.get(label)
+                    v12 = wa_12m.get(label)
+                    suf = ' pp' if 'Inflation' in label else '%'
+                    dec = 2 if 'Inflation' in label else 1
+                    st.metric(f"{label} (6m forecast)",
+                              f"{v6:+.{dec}f}{suf}" if v6 is not None else "—")
+                    st.metric(f"{label} (12m forecast)",
+                              f"{v12:+.{dec}f}{suf}" if v12 is not None else "—")
 
-            # Visualization
+            # Prediction chart
             st.markdown("---")
-            wa_chart_data = []
-            nice_names = {
-                'Oil 6m%': 'Oil Price', 'Oil 12m%': 'Oil Price',
-                'Stock 6m%': 'Stocks', 'Stock 12m%': 'Stocks',
-                'Inflation 6m (pp)': 'Inflation', 'Inflation 12m (pp)': 'Inflation',
-                'Currency 6m%': 'Currency', 'Currency 12m%': 'Currency',
-            }
-            for col in weight_cols:
-                v = wa_results.get(col)
-                if v is not None:
-                    period = '6 Months' if '6m' in col else '12 Months'
-                    wa_chart_data.append({
-                        'Indicator': nice_names[col],
-                        'Period': period,
-                        'Predicted Change': v
-                    })
+            chart_data = []
+            for label, _, _ in weight_keys:
+                nice = label.split(' ', 1)[1] if ' ' in label else label
+                if wa_6m.get(label) is not None:
+                    chart_data.append({'Indicator': nice, 'Period': '6 Months', 'Predicted': wa_6m[label]})
+                if wa_12m.get(label) is not None:
+                    chart_data.append({'Indicator': nice, 'Period': '12 Months', 'Predicted': wa_12m[label]})
 
-            if wa_chart_data:
-                wa_df = pd.DataFrame(wa_chart_data)
-                pred_chart = alt.Chart(wa_df).mark_bar(cornerRadiusTopLeft=4, cornerRadiusTopRight=4).encode(
+            if chart_data:
+                pcd = pd.DataFrame(chart_data)
+                pred_ch = alt.Chart(pcd).mark_bar(
+                    cornerRadiusTopLeft=4, cornerRadiusTopRight=4, size=28
+                ).encode(
                     x=alt.X('Period:N', title=None, axis=alt.Axis(labelAngle=0)),
-                    y=alt.Y('Predicted Change:Q', title='Predicted Change (% / pp)'),
+                    y=alt.Y('Predicted:Q', title='Predicted Change (% / pp)'),
                     color=alt.condition(
-                        alt.datum['Predicted Change'] > 0,
+                        alt.datum.Predicted > 0,
                         alt.value('#10b981'),
                         alt.value('#ef4444')
                     ),
                     column=alt.Column('Indicator:N', title=None,
                         header=alt.Header(labelFontSize=13, labelColor='#e2e8f0')),
-                    tooltip=['Indicator', 'Period', alt.Tooltip('Predicted Change:Q', format='.2f')]
-                ).properties(width=140, height=250).configure_view(stroke=None)
-                st.altair_chart(pred_chart, use_container_width=False)
+                    tooltip=['Indicator', 'Period', alt.Tooltip('Predicted:Q', format='+.2f')]
+                ).properties(width=150, height=260)
+                st.altair_chart(pred_ch, use_container_width=False)
 
             # Download
             st.markdown("---")
-            csv_out = pred_df.to_csv(index=False).encode('utf-8')
-            st.download_button(
-                "📥 Download Prediction Summary CSV",
-                data=csv_out,
-                file_name="crisis_prediction_summary.csv",
-                mime="text/csv"
-            )
-        else:
-            st.warning("No historical crisis data available for predictions.")
+            dl_rows = []
+            for score, row in similar:
+                r = {'Crisis': row['event_name'], 'Match Score': f"{score*100:.0f}%"}
+                for label, c6, c12 in weight_keys:
+                    r[f'{label} 6m'] = row.get(c6)
+                    r[f'{label} 12m'] = row.get(c12)
+                dl_rows.append(r)
+            st.download_button("📥 Download Full Prediction Report",
+                data=pd.DataFrame(dl_rows).to_csv(index=False).encode('utf-8'),
+                file_name="crisis_prediction_report.csv", mime="text/csv")
