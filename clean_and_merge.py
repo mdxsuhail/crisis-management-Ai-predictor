@@ -138,68 +138,29 @@ def clean_and_merge():
         df_crises_agg = df_crises_agg.rename(columns={col: f"african_crises_{col}" for col in df_crises_agg.columns if col != 'Year'})
         print(f"African Crises processed: {len(df_crises_agg)} annual records.")
     else:
-        print(f"Warning: {crises_path} not found.")
+        print(f"Warning: {african_path} not found.")
         df_crises_agg = pd.DataFrame(columns=['Year'])
 
     # -------------------------------------------------------------
-    # 5. S&P 500 Stocks
+    # 6. World Bank Development Indicators
     # -------------------------------------------------------------
-    print("\nStep 5: Processing S&P 500 Stocks...")
-    stocks_path = os.path.join(DATA_DIR, "all_stocks_5yr.csv")
-    if os.path.exists(stocks_path):
-        df_stocks = pd.read_csv(stocks_path)
-        df_stocks['Date'] = pd.to_datetime(df_stocks['date'], format="%Y-%m-%d", errors='coerce')
-        df_stocks = df_stocks.dropna(subset=['Date'])
-        
-        df_stocks = df_stocks.sort_values(['Name', 'Date'])
-        for col in ['open', 'high', 'low', 'close']:
-            df_stocks[col] = df_stocks.groupby('Name')[col].ffill().bfill()
-            
-        df_stocks_agg = df_stocks.groupby('Date').agg({
-            'close': 'mean',
-            'volume': 'sum',
-            'Name': 'nunique'
-        }).reset_index()
-        
-        df_stocks_agg = df_stocks_agg.rename(columns={
-            'close': 'market_avg_close',
-            'volume': 'market_total_volume',
-            'Name': 'market_active_tickers'
-        })
-        
-        df_stocks_agg = df_stocks_agg.sort_values('Date').reset_index(drop=True)
-        df_stocks_agg['daily_return'] = df_stocks_agg['market_avg_close'].pct_change()
-        df_stocks_agg['market_return_30d'] = df_stocks_agg['market_avg_close'].pct_change(30) * 100
-        df_stocks_agg['market_return_90d'] = df_stocks_agg['market_avg_close'].pct_change(90) * 100
-        df_stocks_agg['market_volatility_30d'] = df_stocks_agg['daily_return'].rolling(30).std() * np.sqrt(252) * 100
-        df_stocks_agg = df_stocks_agg.drop(columns=['daily_return'])
-        
-        print(f"S&P Stocks processed: {len(df_stocks_agg)} daily records.")
-    else:
-        print(f"Warning: {stocks_path} not found.")
-        df_stocks_agg = pd.DataFrame(columns=['Date', 'market_avg_close', 'market_total_volume', 'market_active_tickers', 'market_return_30d', 'market_return_90d', 'market_volatility_30d'])
-
-    # -------------------------------------------------------------
-    # 6. World Bank Indicators
-    # -------------------------------------------------------------
-    print("\nStep 6: Processing World Bank Indicators...")
+    print("\nStep 6: Processing World Bank Development Indicators...")
     wb_path = os.path.join(DATA_DIR, "world_bank_development_indicators.csv")
     if os.path.exists(wb_path):
-        df_wb = pd.read_csv(wb_path, low_memory=False)
-        df_wb['Year'] = pd.to_datetime(df_wb['date'], errors='coerce').dt.year
+        df_wb = pd.read_csv(wb_path)
+        df_wb['Year'] = pd.to_numeric(df_wb['date'], errors='coerce')
         df_wb = df_wb.dropna(subset=['Year'])
         df_wb['Year'] = df_wb['Year'].astype(int)
         
-        # Ensure key numeric columns
         wb_num_cols = [c for c in df_wb.columns if c not in ['country', 'date', 'Year']]
         for c in wb_num_cols:
             df_wb[c] = pd.to_numeric(df_wb[c], errors='coerce')
             
-        # Compute global sums for scale indicators and means for rates
-        sum_cols = ['GDP_current_US', 'population', 'rural_population', 'CO2_emisions', 'other_greenhouse_emisions']
+        target_sum_cols = ['GDP_current_US', 'population', 'rural_population', 'CO2_emisions', 'other_greenhouse_emisions']
+        sum_cols = [c for c in target_sum_cols if c in df_wb.columns]
         mean_cols = [c for c in wb_num_cols if c not in sum_cols]
         
-        df_wb_sums = df_wb.groupby('Year')[sum_cols].sum(numeric_only=True).reset_index()
+        df_wb_sums = df_wb.groupby('Year')[sum_cols].sum(numeric_only=True).reset_index() if sum_cols else pd.DataFrame({'Year': df_wb['Year'].unique()})
         df_wb_sums = df_wb_sums.rename(columns={
             'GDP_current_US': 'wb_GDP_total_US',
             'population': 'wb_population_total',
@@ -208,7 +169,7 @@ def clean_and_merge():
             'other_greenhouse_emisions': 'wb_other_greenhouse_emisions_total'
         })
         
-        df_wb_means = df_wb.groupby('Year')[mean_cols].mean(numeric_only=True).reset_index()
+        df_wb_means = df_wb.groupby('Year')[mean_cols].mean(numeric_only=True).reset_index() if mean_cols else pd.DataFrame({'Year': df_wb['Year'].unique()})
         df_wb_means = df_wb_means.rename(columns={c: f"wb_{c}" for c in mean_cols if c != 'Year'})
         
         df_wb_agg = pd.merge(df_wb_sums, df_wb_means, on='Year', how='outer')
@@ -227,11 +188,11 @@ def clean_and_merge():
         col_num_cols = ['cost_of_living_index', 'rent_index', 'cost_of_living_plus_rent_index', 
                         'groceries_index', 'local_purchasing_power_index', 'avg_monthly_net_salary_usd', 
                         'petrol_price_usd_per_liter', 'annual_inflation_rate_2025_pct', 'rent_to_salary_ratio_pct']
-        for col in col_num_cols:
-            if col in df_col.columns:
-                df_col[col] = pd.to_numeric(df_col[col], errors='coerce')
+        avail_col_num = [col for col in col_num_cols if col in df_col.columns]
+        for col in avail_col_num:
+            df_col[col] = pd.to_numeric(df_col[col], errors='coerce')
         
-        col_avg = df_col[col_num_cols].mean().to_frame().T
+        col_avg = df_col[avail_col_num].mean().to_frame().T if avail_col_num else pd.DataFrame()
         col_avg = col_avg.add_prefix('cost_of_living_')
         print("Global Cost of Living Indicators Averages:")
         print(col_avg)
@@ -262,16 +223,24 @@ def clean_and_merge():
             df_gold['gold_price'] = pd.to_numeric(df_gold['Close'], errors='coerce')
         elif 'Adj Close' in df_gold.columns:
             df_gold['gold_price'] = pd.to_numeric(df_gold['Adj Close'], errors='coerce')
+        elif 'price' in df_gold.columns:
+            df_gold['gold_price'] = pd.to_numeric(df_gold['price'], errors='coerce')
+        else:
+            df_gold['gold_price'] = np.nan
             
         df_gold['gold_price'] = df_gold['gold_price'].ffill().bfill()
         df_gold = df_gold.groupby('Date')['gold_price'].mean().reset_index()
         
         df_gold['gold_return_30d'] = df_gold['gold_price'].pct_change(30) * 100
         df_gold['gold_return_90d'] = df_gold['gold_price'].pct_change(90) * 100
-        print(f"Gold Prices processed: {len(df_gold)} daily records from {df_gold['Date'].min().strftime('%Y-%m-%d')} to {df_gold['Date'].max().strftime('%Y-%m-%d')}.")
+        if not df_gold.empty and df_gold['Date'].notna().any():
+            print(f"Gold Prices processed: {len(df_gold)} daily records from {df_gold['Date'].min().strftime('%Y-%m-%d')} to {df_gold['Date'].max().strftime('%Y-%m-%d')}.")
+        else:
+            print(f"Gold Prices processed: {len(df_gold)} daily records.")
     else:
         print(f"Warning: {gold_path} not found.")
         df_gold = pd.DataFrame(columns=['Date', 'gold_price', 'gold_return_30d', 'gold_return_90d'])
+        df_gold['Date'] = pd.to_datetime(df_gold['Date'])
 
     # -------------------------------------------------------------
     # 9. Banking Crisis and Exports Dataset

@@ -100,13 +100,16 @@ def find_similar_crises(query_description, top_n=3):
     # If ML Predictor available, print ML forecasts
     if predict_scenario:
         print("\nMachine Learning Quantitative Predictions:")
-        ml_preds = predict_scenario()
-        if ml_preds:
-            print(f" - Predicted 6m Stock Change: {ml_preds.get('stock_6m', 'N/A')}%")
-            print(f" - Predicted 12m Stock Change: {ml_preds.get('stock_12m', 'N/A')}%")
-            print(f" - Predicted 6m Oil Change: {ml_preds.get('oil_6m', 'N/A')}%")
-            print(f" - Predicted 12m Oil Change: {ml_preds.get('oil_12m', 'N/A')}%")
-            print(f" - Crisis Risk Probability: {ml_preds.get('crisis_risk', 'N/A')}%")
+        try:
+            ml_preds = predict_scenario()
+            if ml_preds:
+                print(f" - Predicted 6m Stock Change: {ml_preds.get('stock_6m', 'N/A')}%")
+                print(f" - Predicted 12m Stock Change: {ml_preds.get('stock_12m', 'N/A')}%")
+                print(f" - Predicted 6m Oil Change: {ml_preds.get('oil_6m', 'N/A')}%")
+                print(f" - Predicted 12m Oil Change: {ml_preds.get('oil_12m', 'N/A')}%")
+                print(f" - Crisis Risk Probability: {ml_preds.get('crisis_risk', 'N/A')}%")
+        except Exception as e:
+            print(f" - ML Predictions unavailable: {e}")
             
     return top_matches
 

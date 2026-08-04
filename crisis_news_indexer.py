@@ -99,42 +99,45 @@ def extract_crisis_news():
     
     crisis_details = {}
     
+    # Precompute text series once outside loop
+    if not df_news.empty:
+        text_series = (df_news['headline'].fillna('').astype(str) + " " + df_news['description'].fillna('').astype(str)).str.lower()
+    else:
+        text_series = pd.Series(dtype=str)
+
     for _, crisis in df_crises.iterrows():
-        event = crisis['event_name']
-        start_date = str(crisis['start_date'])
-        end_date = str(crisis['end_date'])
-        crisis_type = crisis['crisis_type']
-        trigger = str(crisis.get('trigger_description', ''))
-        region = crisis['region']
+        event = str(crisis.get('event_name', ''))
+        start_date = str(crisis.get('start_date', ''))
+        end_date = "" if pd.isna(crisis.get('end_date')) else str(crisis.get('end_date', ''))
+        crisis_type = str(crisis.get('crisis_type', ''))
+        trigger = "" if pd.isna(crisis.get('trigger_description')) else str(crisis.get('trigger_description', ''))
+        region = str(crisis.get('region', ''))
         
         # Build keywords for filtering
         words = set(event.lower().replace('-', ' ').split() + crisis_type.lower().replace('/', ' ').split() + trigger.lower().split())
         words = {w for w in words if len(w) > 3 and w not in {'crisis', 'crash', 'burst', 'global', 'shock'}}
         
-        matches = []
-        if not df_news.empty:
-            for _, r in df_news.iterrows():
-                text = f"{r['headline']} {r['description']}".lower()
-                # Check keyword overlap
-                score = sum(1 for w in words if w in text)
-                if score > 0:
-                    matches.append((score, r))
-                    
-        matches.sort(key=lambda x: x[0], reverse=True)
         top_articles = []
-        seen = set()
-        for score, r in matches:
-            h = r['headline']
-            if h not in seen:
-                seen.add(h)
-                top_articles.append({
-                    'headline': r['headline'],
-                    'description': r['description'],
-                    'date': r['date'],
-                    'source': r['source']
-                })
-            if len(top_articles) >= 8:
-                break
+        if not text_series.empty and words:
+            scores = pd.Series(0, index=df_news.index)
+            for w in words:
+                scores += text_series.str.contains(w, regex=False, na=False).astype(int)
+                
+            match_indices = scores[scores > 0].sort_values(ascending=False).index
+            seen = set()
+            for idx in match_indices:
+                r = df_news.loc[idx]
+                h = r.get('headline', '')
+                if h not in seen:
+                    seen.add(h)
+                    top_articles.append({
+                        'headline': r.get('headline', ''),
+                        'description': r.get('description', ''),
+                        'date': r.get('date', 'N/A'),
+                        'source': r.get('source', 'News')
+                    })
+                if len(top_articles) >= 8:
+                    break
                 
         crisis_details[event] = {
             'event_name': event,

@@ -56,12 +56,15 @@ def main():
         event = crisis['event_name']
         start_dt = crisis['start_date']
         
+        end_val = crisis.get('end_date')
+        trig_val = crisis.get('trigger_description')
+        
         row_data = {
             'event_name': event,
             'start_date': start_dt.strftime('%Y-%m-%d'),
-            'end_date': str(crisis.get('end_date', '')),
+            'end_date': "" if pd.isna(end_val) else str(end_val),
             'crisis_type': crisis['crisis_type'],
-            'trigger_description': str(crisis.get('trigger_description', '')),
+            'trigger_description': "" if pd.isna(trig_val) else str(trig_val),
             'region': crisis['region']
         }
         

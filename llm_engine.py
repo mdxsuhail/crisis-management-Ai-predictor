@@ -11,10 +11,11 @@ except ImportError:
     predict_scenario = None
 
 class LLMCrisisPredictor:
-    def __init__(self, api_key=None, provider="openai", model="gpt-3.5-turbo"):
+    def __init__(self, api_key=None, provider="openai", model="gpt-3.5-turbo", base_url=None):
         self.api_key = api_key
         self.provider = provider.lower() if provider else "openai"
         self.model = model
+        self.base_url = base_url
 
     def call_external_llm(self, prompt, system_prompt=None):
         """
@@ -23,7 +24,7 @@ class LLMCrisisPredictor:
         if not self.api_key:
             return None
             
-        url = "https://api.openai.com/v1/chat/completions"
+        url = f"{self.base_url.rstrip('/')}/chat/completions" if self.base_url else "https://api.openai.com/v1/chat/completions"
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.api_key}"
@@ -45,16 +46,25 @@ class LLMCrisisPredictor:
             req = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'), headers=headers)
             with urllib.request.urlopen(req, timeout=15) as response:
                 res_data = json.loads(response.read().decode('utf-8'))
-                return res_data['choices'][0]['message']['content'].strip()
+                if isinstance(res_data, dict) and 'choices' in res_data and len(res_data['choices']) > 0:
+                    msg = res_data['choices'][0].get('message', {})
+                    if 'content' in msg:
+                        return msg['content'].strip()
+            return "(External AI Service response format unrecognized — Falling back to Local Multi-Agent AI Engine)"
         except Exception as e:
-            return f"(API Call Error: {str(e)} — Falling back to Local Multi-Agent AI Engine)"
+            print(f"LLM API Call Error: {e}")
+            return "(External AI Service unavailable — Falling back to Local Multi-Agent AI Engine)"
 
     def generate_ai_prediction_report(self, user_scenario, similar_crises, ml_predictions=None, custom_shocks=None):
         """
         Generates a ChatGPT-level Multi-Agent Executive Risk Report synthesizing scenario text, PDF uploads, matched crises, and ML predictions.
         """
         if not ml_predictions and predict_scenario:
-            ml_predictions = predict_scenario(custom_shocks)
+            try:
+                ml_predictions = predict_scenario(custom_shocks)
+            except Exception as e:
+                print(f"Prediction scenario error: {e}")
+                ml_predictions = None
             
         ml_str = "ML Predictions unavailable."
         if ml_predictions:
@@ -71,8 +81,8 @@ class LLMCrisisPredictor:
         cris_str = ""
         if similar_crises:
             for score, row in similar_crises[:3]:
-                cris_str += f"- {row['event_name']} ({row['crisis_type']}, {row['region']}, {score*100:.0f}% Match)\n"
-                cris_str += f"  Start Date: {row['start_date']} | Trigger: {row.get('trigger_description', 'N/A')}\n"
+                cris_str += f"- {row.get('event_name', 'Crisis')} ({row.get('crisis_type', 'N/A')}, {row.get('region', 'Global')}, {score*100:.0f}% Match)\n"
+                cris_str += f"  Start Date: {row.get('start_date', 'N/A')} | Trigger: {row.get('trigger_description', 'N/A')}\n"
                 cris_str += f"  6m Stock: {row.get('market_avg_close_change_6m', 'N/A')}% | 12m Stock: {row.get('market_avg_close_change_12m', 'N/A')}%\n\n"
 
         system_prompt = (
@@ -100,7 +110,7 @@ Deliver a comprehensive, ChatGPT-level Executive AI Risk Report covering:
 
         if self.api_key:
             res = self.call_external_llm(user_prompt, system_prompt)
-            if res and not res.startswith("(API Call Error"):
+            if res and not res.startswith("(External AI Service"):
                 return res
 
         return self._generate_local_ai_report(user_scenario, similar_crises, ml_predictions, custom_shocks)
@@ -109,6 +119,8 @@ Deliver a comprehensive, ChatGPT-level Executive AI Risk Report covering:
         """
         Local Multi-Agent AI synthesis engine delivering structured, institutional-grade executive reports.
         """
+        if not isinstance(scenario, str):
+            scenario = str(scenario) if scenario is not None else ""
         s_lower = scenario.lower()
         
         # Determine Threat Matrix
@@ -154,25 +166,48 @@ Deliver a comprehensive, ChatGPT-level Executive AI Risk Report covering:
         top_type = "Systemic Shock"
         if similar_crises:
             score, row = similar_crises[0]
-            top_name = row['event_name']
+            top_name = row.get('event_name', 'Historical Crisis')
             top_sim = f"{score*100:.0f}%"
             top_type = row.get('crisis_type', 'Historical Crisis')
 
+        # Helper for safe float parsing
+        def _safe_float(val, default_val=0.0):
+            if val is None:
+                return default_val
+            try:
+                return float(val)
+            except (ValueError, TypeError):
+                return default_val
+
         # ML Projections
-        s6 = ml_predictions.get('stock_6m', -3.5) if ml_predictions else -3.5
-        s12 = ml_predictions.get('stock_12m', 4.2) if ml_predictions else 4.2
-        o6 = ml_predictions.get('oil_6m', 12.8) if ml_predictions else 12.8
-        o12 = ml_predictions.get('oil_12m', 18.5) if ml_predictions else 18.5
-        g6 = ml_predictions.get('gold_6m', 6.4) if ml_predictions else 6.4
-        g12 = ml_predictions.get('gold_12m', 11.2) if ml_predictions else 11.2
-        c_risk = ml_predictions.get('crisis_risk', 38.5) if ml_predictions else 38.5
+        s6 = _safe_float(ml_predictions.get('stock_6m') if ml_predictions else None, -3.5)
+        s12 = _safe_float(ml_predictions.get('stock_12m') if ml_predictions else None, 4.2)
+        o6 = _safe_float(ml_predictions.get('oil_6m') if ml_predictions else None, 12.8)
+        o12 = _safe_float(ml_predictions.get('oil_12m') if ml_predictions else None, 18.5)
+        g6 = _safe_float(ml_predictions.get('gold_6m') if ml_predictions else None, 6.4)
+        g12 = _safe_float(ml_predictions.get('gold_12m') if ml_predictions else None, 11.2)
+        c_risk = _safe_float(ml_predictions.get('crisis_risk') if ml_predictions else None, 38.5)
 
         # Check if PDF text is embedded
         doc_note = ""
         if "[uploaded document content]:" in s_lower:
             doc_note = "📄 **Document Context Loaded**: AI has parsed your uploaded file content and integrated its key risk factors into this report."
 
-        report = f"""### 🛡️ Multi-Agent AI Executive Crisis Risk Report
+        # Load dynamic metrics note from processed/model_metrics.json
+        metrics_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "processed", "model_metrics.json")
+        metrics_note = "Trained on 11,000+ daily macro time-series observations"
+        if os.path.exists(metrics_path):
+            try:
+                with open(metrics_path, 'r') as f:
+                    m_data = json.load(f)
+                    s12_r2 = m_data.get('metrics', {}).get('stock_12m', {}).get('r2_score')
+                    c_auc = m_data.get('metrics', {}).get('crisis_risk', {}).get('roc_auc')
+                    if s12_r2 is not None and c_auc is not None:
+                        metrics_note = f"Trained on 11,000+ daily macro observations (S&P 12m R² = {s12_r2:.3f}, Risk AUC = {c_auc:.3f})"
+            except Exception:
+                pass
+
+        report = rf"""### 🛡️ Multi-Agent AI Executive Crisis Risk Report
 
 <div style="background:{badge_bg}; border:1px solid {color_code}; padding:14px 18px; border-radius:10px; margin-bottom:16px;">
   <span style="color:{color_code}; font-weight:800; font-size:1.15rem;">🚨 THREAT LEVEL: {risk_level}</span><br>
@@ -192,11 +227,11 @@ The target scenario (*"{scenario[:250]}..."*) triggers the following core macroe
         for d in drivers:
             report += f"- ⚠️ **{d}**: Elevates cost of capital, compresses profit margins, and tightens liquidity.\n"
 
-        report += f"""
+        report += rf"""
 ---
 
 #### 📊 2. Quantitative Analyst Outlook (Tri-Model Ensemble: RF + XGBoost + GRU)
-Trained on 11,000+ daily macro time-series observations ($R^2 = 0.936$, $\text{{AUC}} = 0.952$):
+{metrics_note}:
 
 | Target Market Asset | 6-Month Predictive Horizon | 12-Month Predictive Horizon | Primary Model Driver |
 | :--- | :---: | :---: | :--- |
@@ -224,6 +259,11 @@ Trained on 11,000+ daily macro time-series observations ($R^2 = 0.936$, $\text{{
         """
         ChatGPT-level Q&A Engine with document context integration.
         """
+        if not isinstance(user_question, str):
+            user_question = str(user_question) if user_question is not None else ""
+        if not isinstance(context_scenario, str):
+            context_scenario = str(context_scenario) if context_scenario is not None else ""
+
         q_lower = user_question.lower()
         ctx_lower = context_scenario.lower()
         
@@ -235,7 +275,7 @@ Trained on 11,000+ daily macro time-series observations ($R^2 = 0.936$, $\text{{
         
         if self.api_key:
             res = self.call_external_llm(user_prompt, system_prompt)
-            if res and not res.startswith("(API Call Error"):
+            if res and not res.startswith("(External AI Service"):
                 return res
 
         # Check for uploaded document text match

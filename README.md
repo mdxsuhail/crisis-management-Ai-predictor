@@ -15,7 +15,7 @@ An AI-powered financial crisis analysis and prediction tool built with Python, M
 - **Historical Crisis Analogs**: Ranks top matching historical crises (out of 20 major benchmark events from 1929 to 2020) with similarity scores and post-crisis performance metrics.
 
 ### 2. 🧪 AI Stress Testing & Custom Scenario Simulator
-- Interactive sliders for oil shocks, market volatility, inflation rates, interest rates, debt default counts, and COVID stringency.
+- Interactive sliders and dropdown controls for oil shocks, market volatility, inflation rates, interest rates, cost of living index, debt default counts, banking stress levels, and export trade growth.
 - Instant real-time ML prediction updates and AI executive synthesis reports for custom stress-tested scenarios.
 
 ### 3. 💬 AI Crisis Assistant (Interactive Q&A)
@@ -26,6 +26,7 @@ An AI-powered financial crisis analysis and prediction tool built with Python, M
 - Search 1.2M+ ABC News headlines by keyword to identify coverage peak dates and map them to market indicators.
 
 ### 5. 🤖 ML Model Insights & Data Learning
+- Tri-Model Hybrid Ensemble (Random Forest + XGBoost Extreme Gradient Boosting + Gated Recurrent Unit GRU Neural Net).
 - Visualizes feature importances (e.g., market volatility, oil momentum, inflation, debt defaults) and model validation metrics ($R^2$ scores, MAE, AUC), proving how the AI learns directly from the dataset.
 
 ---
@@ -66,7 +67,10 @@ python analyze_crises.py
 # 4. Train ML predictor models on dataset
 python ml_predictor.py
 
-# 5. Launch the dashboard
+# 5. Index financial news headlines for crisis details
+python crisis_news_indexer.py
+
+# 6. Launch the dashboard
 streamlit run app.py
 ```
 Open your browser at `http://localhost:8501`.
@@ -77,10 +81,11 @@ Open your browser at `http://localhost:8501`.
 
 ```
 ├── app.py                     # Streamlit web dashboard (main entry point)
-├── llm_engine.py              # Dual-mode AI Predictor engine (Local Smart AI + optional API)
-├── ml_predictor.py            # Machine Learning trainer (GradientBoosting & RandomForest)
+├── llm_engine.py              # Multi-agent AI Predictor engine (Local Smart AI + optional API)
+├── ml_predictor.py            # Tri-Model Hybrid Ensemble trainer (RF + XGBoost + GRU)
 ├── clean_and_merge.py         # Data cleaning & 11K-row timeline merging pipeline
 ├── analyze_crises.py          # Historical crisis impact analyzer
+├── crisis_news_indexer.py     # Financial news headline indexer for historical crisis details
 ├── find_similar_crises.py     # CLI tool for similarity matching & ML prediction
 ├── HOW_TO_RUN.txt             # Plain-text step-by-step instruction guide
 ├── run_app.bat                # One-click Windows batch execution script

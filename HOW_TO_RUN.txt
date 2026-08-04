@@ -27,7 +27,10 @@ Option B: Run manually via Terminal
    4. Train Machine Learning model on historical dataset:
       > python ml_predictor.py
 
-   5. Launch the Streamlit Web Application:
+   5. Index financial news headlines for crisis events:
+      > python crisis_news_indexer.py
+
+   6. Launch the Streamlit Web Application:
       > streamlit run app.py
 
    The application will open automatically in your browser at:
@@ -37,7 +40,7 @@ Option B: Run manually via Terminal
 2. DATASETS INCLUDED & USED
 --------------------------------------------------------------------------------
 
-The AI Predictor uses 6 real-world financial and macroeconomic datasets:
+The AI Predictor uses 7 real-world financial and macroeconomic datasets:
 
 1. `dataset/crisis_events.csv`: Pre-filled template of 20 major historical crises 
    (1929 Great Depression, 1973 Oil Shock, 1987 Black Monday, 2000 Dot-com, 
@@ -66,10 +69,11 @@ The AI Predictor uses 6 real-world financial and macroeconomic datasets:
 - Data Pipeline (`clean_and_merge.py`): Combines 11,000+ daily observations into a 
   unified macroeconomic timeline saved to `processed/clean_data.csv`.
 
-- ML Model Training (`ml_predictor.py`): Fits Gradient Boosting Regressors and 
-  Random Forest Classifiers on the historical timeline. It learns how market 
-  volatility, oil price momentum, inflation, debt defaults, and news spikes 
-  predict future 6-month & 12-month market returns, oil price shifts, and 
+- ML Model Training (`ml_predictor.py`): Fits a Tri-Model Hybrid Ensemble 
+  (Random Forest, XGBoost Extreme Gradient Boosting, and Gated Recurrent Unit GRU 
+  Neural Net) on the historical timeline. It learns how market volatility, oil 
+  price momentum, inflation, debt defaults, and news spikes predict future 6-month 
+  & 12-month market returns, oil price shifts, gold safe-haven returns, and 
   recession probabilities.
 
 - Built-In LLM AI Engine (`llm_engine.py`): Analyzes your scenario input, combines 

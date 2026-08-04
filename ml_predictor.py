@@ -94,7 +94,7 @@ class GRUNeuralModel:
         y_vec = y.reshape(-1, 1)
         
         for _ in range(epochs):
-            for i in range(min(N, 500)):
+            for i in range(N):
                 x_t = X[i:i+1].T
                 h_prev = np.zeros((self.hidden_dim, 1))
                 
@@ -110,8 +110,16 @@ class GRUNeuralModel:
                     pred = out
                     
                 err = pred - y_vec[i:i+1]
+                dh = self.Wo.T @ err
+                dz = dh * (h_tilde - h_prev) * z_t * (1 - z_t)
+                dh_tilde = dh * z_t * (1 - np.tanh(h_tilde)**2)
+
                 self.Wo -= lr * err @ h_t.T
                 self.bo -= lr * err
+                self.Wz -= lr * dz @ x_t.T
+                self.bz -= lr * dz
+                self.Wh -= lr * dh_tilde @ x_t.T
+                self.bh -= lr * dh_tilde
 
     def predict(self, X):
         N, D = X.shape
@@ -146,7 +154,7 @@ class GRUNeuralModel:
 
     @classmethod
     def from_weights(cls, w):
-        m = cls(w['input_dim'], w['hidden_dim'], w['is_classification'])
+        m = cls(input_dim=w['input_dim'], hidden_dim=w['hidden_dim'], is_classification=w['is_classification'])
         m.Wz, m.Uz, m.bz = w['Wz'], w['Uz'], w['bz']
         m.Wr, m.Ur, m.br = w['Wr'], w['Ur'], w['br']
         m.Wh, m.Uh, m.bh = w['Wh'], w['Uh'], w['bh']
@@ -222,10 +230,12 @@ def build_training_dataset():
     return df_merged
 
 # ─────────────────────────────────────────────────────────────
-# 3. Model Training (Random Forest + XGBoost + GRU)
+# 3. Training Ensemble Pipelines
 # ─────────────────────────────────────────────────────────────
 def train_models():
-    print("Step 1: Building vectorized training dataset...")
+    global _MODEL_CACHE
+    _MODEL_CACHE = None
+    print("Step 1: Building vector training dataset...")
     df_full = build_training_dataset()
     if df_full is None or df_full.empty:
         print("Error: Could not build training dataset.")
@@ -238,9 +248,6 @@ def train_models():
     for col in X.columns:
         X[col] = X[col].fillna(X[col].median()).fillna(0)
         
-    means = X.mean()
-    stds = X.std().replace(0, 1.0)
-    
     targets = {
         'stock_6m': 'target_stock_6m',
         'stock_12m': 'target_stock_12m',
@@ -269,7 +276,11 @@ def train_models():
         if len(X_sub) < 50:
             continue
             
-        X_train, X_test, y_train, y_test = train_test_split(X_sub, y_sub, test_size=0.2, random_state=42)
+        # Chronological split without shuffling
+        X_train, X_test, y_train, y_test = train_test_split(X_sub, y_sub, test_size=0.2, shuffle=False)
+        
+        means = X_train.mean()
+        stds = X_train.std().replace(0, 1.0)
         
         X_train_norm = ((X_train - means) / stds).values
         X_test_norm = ((X_test - means) / stds).values
@@ -355,16 +366,17 @@ def train_models():
             feature_importances[key] = sorted_imp
 
     gru_weights = {k: m.get_weights() for k, m in gru_models.items()}
+    overall_means = X.mean()
+    overall_stds = X.std().replace(0, 1.0)
 
-    # Save trained ensemble models
     save_data = {
         'rf_models': rf_models,
         'xgb_models': xgb_models,
         'gru_weights': gru_weights,
         'features': available_features,
         'feature_defaults': X.median().to_dict(),
-        'means': means.to_dict(),
-        'stds': stds.to_dict()
+        'means': overall_means.to_dict(),
+        'stds': overall_stds.to_dict()
     }
     joblib.dump(save_data, MODEL_PATH)
     
@@ -381,22 +393,39 @@ def train_models():
     print(f"\nSUCCESS: Tri-Model Hybrid Ensemble saved to {MODEL_PATH}")
     print(f"Metrics saved to {METRICS_PATH}")
 
+_MODEL_CACHE = None
+
 def predict_scenario(feature_overrides=None):
-    if not os.path.exists(MODEL_PATH):
-        train_models()
-        
-    if not os.path.exists(MODEL_PATH):
-        return None
-        
-    saved = joblib.load(MODEL_PATH)
-    rf_models = saved['rf_models']
-    xgb_models = saved['xgb_models']
-    gru_weights = saved.get('gru_weights', {})
-    gru_models = {k: GRUNeuralModel.from_weights(w) for k, w in gru_weights.items()} if gru_weights else saved.get('gru_models', {})
-    features = saved['features']
-    defaults = saved['feature_defaults']
-    means = pd.Series(saved['means'])
-    stds = pd.Series(saved['stds']).replace(0, 1.0)
+    global _MODEL_CACHE
+    if _MODEL_CACHE is None:
+        if not os.path.exists(MODEL_PATH):
+            return None
+        try:
+            saved = joblib.load(MODEL_PATH)
+            rf_models = saved['rf_models']
+            xgb_models = saved['xgb_models']
+            gru_weights = saved.get('gru_weights', {})
+            gru_models = {k: GRUNeuralModel.from_weights(w) for k, w in gru_weights.items()} if gru_weights else saved.get('gru_models', {})
+            _MODEL_CACHE = {
+                'rf_models': rf_models,
+                'xgb_models': xgb_models,
+                'gru_models': gru_models,
+                'features': saved['features'],
+                'defaults': saved['feature_defaults'],
+                'means': pd.Series(saved['means']),
+                'stds': pd.Series(saved['stds']).replace(0, 1.0)
+            }
+        except Exception as e:
+            print(f"Error loading model cache: {e}")
+            return None
+
+    rf_models = _MODEL_CACHE['rf_models']
+    xgb_models = _MODEL_CACHE['xgb_models']
+    gru_models = _MODEL_CACHE['gru_models']
+    features = _MODEL_CACHE['features']
+    defaults = _MODEL_CACHE['defaults']
+    means = _MODEL_CACHE['means']
+    stds = _MODEL_CACHE['stds']
     
     input_values = defaults.copy()
     if feature_overrides:
@@ -409,9 +438,11 @@ def predict_scenario(feature_overrides=None):
     
     predictions = {}
     for key in rf_models.keys():
+        if key not in xgb_models:
+            continue
         rf = rf_models[key]
         xgb_m = xgb_models[key]
-        gru_m = gru_models[key]
+        gru_m = gru_models.get(key)
         
         if key == 'crisis_risk':
             rf_p = rf.predict_proba(X_pred)[0][1]
