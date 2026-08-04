@@ -1,0 +1,1182 @@
+{
+  "1973 Oil Shock": {
+    "event_name": "1973 Oil Shock",
+    "start_date": "1973-10-16",
+    "end_date": "1974-03-18",
+    "crisis_type": "Commodity/Energy Crisis",
+    "trigger_description": "OPEC oil embargo in response to Western support for Israel in the Yom Kippur War",
+    "region": "Global / Middle East",
+    "matched_news_count": 4420,
+    "headlines": [
+      {
+        "headline": "Oil rises on European stock draw despite demand slowdown forecast",
+        "description": "Oil prices rose more than $1 a barrel on Friday, supported by a drop in European inventories and OPEC output cuts despite the International Energy Agency reporting demand growth at its lowest since the financial crisis of 2008.",
+        "date": "Aug 09 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Trump official slams cartels as U.S. lawmakers push anti-OPEC bill",
+        "description": "A senior administration official said on Friday that U.S. national security depends on affordable energy, and slammed cartels when asked if President Donald Trump would support a bill targeting the OPEC production group's oil supply cuts.",
+        "date": "Feb 08 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. crude gains, slowing global economy challenge oil market in 2019: IEA",
+        "description": "U.S. oil production growth combined with a slowing global economy will put oil prices under downward pressure in 2019, challenging OPEC's resolve to support the market with output cuts, the International Energy Agency said on Friday.",
+        "date": "Jan 18 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Chevron says it will not dispute climate science in U.S. lawsuit",
+        "description": "A Chevron attorney said in court on Wednesday that the company supports scientific conclusions that humans are causing climate change, a response to a lawsuit that accuses five major energy producers of misleading the public for years about their role in global warming.",
+        "date": "Mar 21 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Oil climbs 2% on U.S. stock draw but gains capped as OPEC+ set to ease cuts",
+        "description": "Oil prices rose 2% on Wednesday, supported by a sharp drop in U.S. crude inventories, but further gains were limited as OPEC and its allies are set to ease supply curbs from August as the global economy gradually recovers from the coronavirus pandemic.",
+        "date": "Jul 15 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "BlackRock sees big risk of U.S. easing pandemic support too soon",
+        "description": "There is a significant risk that the policy response to the coronavirus crisis in the United States could be scaled back too soon, BlackRock Investment Institute's global chief investment strategist Mike Pyle said on Monday.",
+        "date": "Jun 29 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Amazon pledges $2 billion venture capital fund to invest in clean energy",
+        "description": "Amazon.com Inc  said on Tuesday it will launch a $2 billion venture capital fund that will focus on technology investments to reduce the impact of climate change and support sustainable development.",
+        "date": "Jun 23 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Saudi Aramco cuts hundreds of jobs amid oil market downturn, sources say",
+        "description": "State oil giant Saudi Aramco  started laying off hundreds of employees this month, two sources familiar with the matter said, as global energy companies reduce their workforces in response to the coronavirus crisis.",
+        "date": "Jun 18 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "1979 Energy Crisis": {
+    "event_name": "1979 Energy Crisis",
+    "start_date": "1979-01-01",
+    "end_date": "1980-12-31",
+    "crisis_type": "Commodity/Energy Crisis",
+    "trigger_description": "Iranian Revolution and Iran-Iraq War causing global oil supply disruption and price doubling",
+    "region": "Global / Middle East",
+    "matched_news_count": 6106,
+    "headlines": [
+      {
+        "headline": "Oil falls 1% as investors reassess Middle East risks",
+        "description": "Oil prices fell almost 1% on Tuesday, surrendering some recent gains as investors reconsidered the likelihood of immediate supply disruptions in the Middle East after the United States killed a top Iranian military commander last week.",
+        "date": "Jan 07 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. energy shareholders seek to leave behind a lost decade",
+        "description": "The 2010s was a lost decade for shares of U.S. energy companies overall. Volatile commodity prices amid growing supply, poor  financial performance and disfavor from some investor groups all contributed to the energy sector's transformation from investor darling to investor outcast.",
+        "date": "Dec 27 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Oil prices strengthen more than 1% on Iran risk",
+        "description": "Oil prices rose more than 1% on Monday, as investors worried about possible supply disruptions in the energy-rich Middle East after Iran's seizure of a British tanker last week.",
+        "date": "Jul 22 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Iranian oil: 40 years of revolution, war, sanctions and bans",
+        "description": "Nearly 40 years after the 1979 Islamic revolution saw the exit of Western oil companies from Iran, the Iranian oil sector faces yet another costly disruption after a series of interruptions from war, sanctions and diplomatic isolation.",
+        "date": "Nov 02 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Oil rallies as supply disruptions seen from Canada to Libya",
+        "description": "Oil prices jumped on Wednesday as plunging U.S. crude stockpiles compounded supply worries in a market already uncertain about Libyan exports, a production disruption in Canada and Washington's demands that importers stop buying Iranian crude from November.",
+        "date": "Jun 27 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Shell plastics plant Trump touted faces oversupply risks: energy institute report",
+        "description": "A massive Pennsylvania plastics project that President Donald Trump touted during a visit last year faces risks of oversupply and a low price outlook for the materials, a report by an institute that examines energy issues said on Thursday.",
+        "date": "Jun 04 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Global oil supply to fall 6% by 2030 due to delayed projects: data",
+        "description": "Global oil supplies may be 6% less than expected by 2030 because of delays to investments by energy companies in response to falling crude prices due to the coronavirus crisis, data from energy analysts at Rystad showed.",
+        "date": "Apr 24 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. consumer prices post largest drop in five years amid coronavirus disruptions",
+        "description": "U.S. consumer prices fell by the most in more than five years in March and further decreases are likely as the novel coronavirus outbreak suppresses demand for some goods and services, offsetting price increases related to shortages resulting from disruptions to the supply chain.",
+        "date": "Apr 10 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Latin American Debt Crisis": {
+    "event_name": "Latin American Debt Crisis",
+    "start_date": "1982-08-01",
+    "end_date": "1990-12-31",
+    "crisis_type": "Sovereign Debt Crisis",
+    "trigger_description": "Mexico defaulting on sovereign debt triggering cascading defaults across Latin America",
+    "region": "Latin America",
+    "matched_news_count": 5687,
+    "headlines": [
+      {
+        "headline": "Trump oil deal raises question for Mexico: At what cost?",
+        "description": "Mexico's president has incurred a debt with his U.S. counterpart Donald Trump by accepting U.S. help to end a standoff over global oil cuts, triggering concern the American will in return make the country pay on issues like migration and security.",
+        "date": "Apr 14 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Aeromexico becomes latest LatAm airline to file for bankruptcy",
+        "description": "Mexican airline Aeromexico said on Tuesday it had begun restructuring under Chapter 11 proceedings, the latest Latin American airline to run into serious trouble as the coronavirus pandemic wreaks havoc on tourism and business travel.",
+        "date": "Jun 30 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Factbox: How the North American trade deal will affect labor, environment, drugs",
+        "description": "New amendments to the U.S.-Mexico-Canada trade agreement (USMCA) focus heavily on stronger labor enforcement, outlining a detailed process to address any allegations that Mexican factories are violating workers' rights.",
+        "date": "Dec 11 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Venture capital fuels Latam 'unicorns' expansion beyond borders",
+        "description": "Surging venture capital investment in Latin American startups has financed international expansion across the region and beyond, as business models that do not require large amounts of capital have helped many firms avoid silos common in the region.",
+        "date": "Aug 08 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Mexico's next leader says NAFTA deal preserves energy 'sovereignty'",
+        "description": "Mexican president-elect Andres Manuel Lopez Obrador welcomed a deal between Mexico and the United States to overhaul the North American Free Trade Agreement (NAFTA) that he said preserved Mexican \"sovereignty\" in the energy sector.",
+        "date": "Aug 27 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Exclusive: U.S. turns screws on maritime industry to cut off Venezuela's oil",
+        "description": "Several companies that certify vessels are seaworthy and ship insurers have withdrawn services to tankers involved in the Venezuelan oil trade as the United States targets the maritime industry to tighten sanctions on the Latin American country.",
+        "date": "Jul 13 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Goya chief executive sparks backlash over praise for Trump",
+        "description": "Goya Foods Inc, the largest Hispanic-owned U.S. food company and a popular brand among Latino Americans, became the target of a boycott campaign on social media on Friday sparked by its CEO effusively praising President Donald Trump at the White House.",
+        "date": "Jul 11 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "LATAM Airlines adds $1.3 billion to bankruptcy financing proposal, Brazil unit seeks protection",
+        "description": "LATAM Airlines, the largest airline group in Latin America, said Thursday it had secured an additional $1.3 billion for its financing proposal before a New York bankruptcy court, while adding its unit in Brazil to the debt restructuring process.",
+        "date": "Jul 09 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Black Monday (1987)": {
+    "event_name": "Black Monday (1987)",
+    "start_date": "1987-10-19",
+    "end_date": "1987-10-20",
+    "crisis_type": "Stock Market Crash",
+    "trigger_description": "Sudden market downturn accelerated by program trading and panic selling",
+    "region": "Global",
+    "matched_news_count": 28404,
+    "headlines": [
+      {
+        "headline": "Wall Street banks see trading-revenue renaissance ending soon",
+        "description": "Big swings in stock and bond markets since March have helped big Wall Street banks weather the coronavirus downturn better than they otherwise might have, but their trading-revenue gains are unlikely to last.",
+        "date": "Jul 14 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. home solar installer Sunrun to buy Vivint Solar for about $1.46 billion",
+        "description": "Sunrun Inc  said on Monday it will buy Blackstone-backed peer Vivint Solar  for about $1.46 billion in an all-stock deal, as the top U.S. residential solar installers look to solidify their market position.",
+        "date": "Jul 07 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "London Stock Exchange finds broad backing for shorter trading day",
+        "description": "There is broad backing in stock markets for cutting the trading day by 90 minutes in a coordinated way across European exchanges, the London Stock Exchange said on Monday.",
+        "date": "Jun 01 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Market panic lingers despite unprecedented Fed support",
+        "description": "Global equities slid further and safe-haven assets rose on Monday after a massive array of new programs from the U.S. Federal Reserve underscored the \"severe\" disruptions the coronavirus pandemic poses to a fast-weakening world economy.",
+        "date": "Mar 23 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Key U.S. business group opposes shutting U.S. stock trading, short-selling bans",
+        "description": "Shutting down the U.S. stock market would be \"exactly the wrong thing to do\" by depriving businesses and investors of capital just when they need it most, a U.S. Chamber of Commerce official said on Tuesday, adding that the group also opposes any ban on short selling.",
+        "date": "Mar 17 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street clobbered as crude plummets, virus crisis deepens",
+        "description": "Wall Street suffered its biggest one-day loss since the 2008 financial crisis on Monday and recession worries loomed large as tumbling oil prices and ongoing coronavirus fears prompted investor panic on the anniversary of the U.S. stock market's longest-ever bull run.",
+        "date": "Mar 09 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Factbox: A 7% plunge in the S&P triggered a trading halt. Here's how circuit breakers work",
+        "description": "A plunge in U.S. markets on Monday triggered a 15-minute trading halt in stocks after the S&P 500 fell 7% shortly after the market opened.",
+        "date": "Mar 09 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. stock market circuit breakers working as expected: NYSE president",
+        "description": "Safeguards in the U.S. stock market are functioning as planned, the president of the New York Stock Exchange said on Monday, after a 7% decline in the S&P 500 triggered a 15 minute trading pause shortly after the market opened.",
+        "date": "Mar 09 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Japanese Asset Bubble Burst": {
+    "event_name": "Japanese Asset Bubble Burst",
+    "start_date": "1991-01-01",
+    "end_date": "2001-12-31",
+    "crisis_type": "Banking Crisis",
+    "trigger_description": "Collapse of Japanese stock and real estate bubble causing prolonged banking crisis and deflation",
+    "region": "Japan / East Asia",
+    "matched_news_count": 11477,
+    "headlines": [
+      {
+        "headline": "Blackstone to switch from a partnership to a corporation",
+        "description": "Blackstone Group LP, the world's largest manager of alternative assets such as private equity and real estate, said on Thursday it would convert from a partnership to a corporation, in a bid to get more investors into its stock.",
+        "date": "Apr 18 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Cramer's lightning round: I know people worry about Ventas, but I'm not backing down",
+        "description": "Jim Cramer rattles off his take on callers' favorite stocks, including a real estate play causing a stir with investors.",
+        "date": "7:06  PM ET Mon, 19 March 2018",
+        "source": "CNBC News"
+      },
+      {
+        "headline": "Insurers favor warehouse investments over offices as pandemic hastens real estate shifts",
+        "description": "Global insurers want to increase investments in commercial warehouses as their stakes in office space become riskier because of employees working remotely during the novel coronavirus pandemic, Goldman Sachs Asset Management (GSAM) executives said.",
+        "date": "Jul 16 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. seeks Warhol, Monet paintings linked to 1MDB scandal",
+        "description": "The U.S. Department of Justice on Wednesday said it was looking to recover another $96 million in assets in real estate and artwork allegedly linked to the 1Malaysia Development Berhad (1MDB) international money-laundering conspiracy.",
+        "date": "Jul 02 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Macy's raises $4.5 billion to shore up funds as stores reopen, shares surge",
+        "description": "Macy's Inc  said on Monday it raised a total of $4.5 billion, including $3.15 billion in new borrowings against its real estate assets, as the department store chain tries to navigate through the fallout from the COVID-19 pandemic.",
+        "date": "Jun 08 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Blackstone's first-quarter profit rises but coronavirus weighs",
+        "description": "Blackstone Group Inc , the world's largest manager of alternative assets such as private equity and real estate, reported a 4% rise in first-quarter distributable earnings on Thursday, driven by a surge in management fees, even as its funds took a hit in the coronavirus-induced downturn.",
+        "date": "Apr 23 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Fund managers freeze UK institutional property funds",
+        "description": "Investment managers BlackRock  and Schroders  have suspended trading in UK real estate funds aimed at institutional investors, citing difficulty in getting an accurate price for their assets.",
+        "date": "Apr 02 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "SoftBank shares jump 20% on record buyback announcement",
+        "description": "SoftBank Group Corp  stock jumped 20% on Tuesday, extending a run that began a day earlier when the Japanese tech investor announced up to $41 billion in asset sales and a record share buyback to shore up its collapsing share price.",
+        "date": "Mar 23 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "1992 Black Wednesday": {
+    "event_name": "1992 Black Wednesday",
+    "start_date": "1992-09-16",
+    "end_date": "1992-09-17",
+    "crisis_type": "Currency Crisis",
+    "trigger_description": "Speculative attack on the British pound forcing its withdrawal from the European Exchange Rate Mechanism",
+    "region": "United Kingdom / Europe",
+    "matched_news_count": 37054,
+    "headlines": [
+      {
+        "headline": "AstraZeneca sticks to 2020 outlook, boosted by drug stockpiling",
+        "description": "AstraZeneca  topped analysts' estimates for quarterly profit and reiterated its targets for the year on Wednesday, as the British drugmaker benefited from higher demand for some of its medicines during the coronavirus pandemic.",
+        "date": "Apr 29 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street falls on dour economic data, corporate earnings",
+        "description": "U.S. stocks fell on Wednesday as dismal economic data and first-quarter earnings reports compounded concerns over the extent of damage from the coronavirus outbreak.",
+        "date": "Apr 15 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "NYSE takes steps to keep coronavirus from trading floor: memo",
+        "description": "The New York Stock Exchange is taking steps to separate traders on the floor of its iconic 11 Wall Street building and employees of the NYSE and its parent Intercontinental Exchange Inc , to reduce the risk of spreading coronavirus, according to an internal memo sent Wednesday.",
+        "date": "Mar 11 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Federal Reserve terminates 2015 forex enforcement action against Bank of America",
+        "description": "The U.S. Federal Reserve announced Wednesday it had terminated a 2015 enforcement action against Bank of America  over its shortcomings in preventing traders from manipulating foreign exchange rates.",
+        "date": "Dec 03 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Black student loan borrowers are defaulting at nearly twice the rate of whites: NY Fed",
+        "description": "Student loan borrowers from mostly black neighborhoods are almost twice as likely to default on their debt as borrowers from neighborhoods that are mostly white, according to research released Wednesday by the Federal Reserve Bank of New York.",
+        "date": "Nov 13 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Takeaway CEO says he does not plan to improve bid for Just Eat",
+        "description": "Takeaway.com NV  CEO Jitse Groen said on Wednesday he does not plan to improve his company's 4.3 billion pound ($5.50 billion) all-share bid to buy British rival Just Eat PLC, despite a higher cash offer from rival Prosus NV .",
+        "date": "Nov 13 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Global stocks rise despite lackluster results; sterling creeps up as EU delays Brexit decision",
+        "description": "World stock indexes climbed on Wednesday as investors brushed aside some earnings disappointments, while the British pound inched up as European Union leaders delayed a decision on whether to grant Britain a three-month Brexit extension.",
+        "date": "Oct 23 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Global stocks jump on report Brexit deal may be close, oil slips",
+        "description": "Stocks in Europe and on Wall Street jumped about 1% on Tuesday on strong U.S. corporate results and a possible deal to avoid a disorderly British exit from the European Union, while oil prices fell as weak China data kindled global economic fears.",
+        "date": "Oct 15 2019",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Mexican Peso Crisis (Tequila)": {
+    "event_name": "Mexican Peso Crisis (Tequila)",
+    "start_date": "1994-12-20",
+    "end_date": "1995-11-01",
+    "crisis_type": "Currency Crisis",
+    "trigger_description": "Sudden devaluation of the Mexican peso triggering capital flight and emergency IMF bailout",
+    "region": "Mexico / Latin America",
+    "matched_news_count": 3458,
+    "headlines": [
+      {
+        "headline": "Wall Street traders pump up Argentine peso as currency controls hit home",
+        "description": "Argentina's peso surged on Tuesday, pumped up by Wall Street traders cheering President Mauricio Macri's capital controls that are aimed at protecting the beleaguered currency.",
+        "date": "Sep 03 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Argentine peso, bonds whiplashed after capital controls imposed",
+        "description": "Argentine bond prices fell to record lows on Monday and the official and black market pesos diverged after the country imposed capital controls in a bid to stem a currency rout that is sharpening the risk of default.",
+        "date": "Sep 03 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Exclusive: Guarding stability, China likely to slow yuan's slide to 7 per dollar - sources",
+        "description": "China is likely to use its vast currency reserves to stop any precipitous fall through the psychologically important level of 7 yuan per dollar as it could risk triggering speculation and heavy capital outflows, policy insiders said.",
+        "date": "Oct 26 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Brazil, Mexico currencies both rebound but real has more legs than peso",
+        "description": "The Brazilian real and Mexican peso have both rebounded strongly in recent weeks, but their rallies are starting to diverge with the peso running out of steam and the real gaining momentum.",
+        "date": "Jun 05 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "EU's Vestager denies making Lufthansa bailout more difficult",
+        "description": "EU antitrust chief Margrethe Vestager denied on Friday that she was putting hurdles in the way of Lufthansa's  $10 billion government rescue, saying companies getting big capital injections from the state have to offset their competitive advantage.",
+        "date": "May 29 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Lufthansa to resume flights to 20 destinations from mid-June",
+        "description": "Lufthansa , which is in talks with the German government over a 9 billion euro ($9.8 billion) bailout, will resume flights to 20 destinations from mid-June, including some holiday hot-spots, a spokeswoman said on Sunday.",
+        "date": "May 24 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Apple borrows on the cheap to fund buybacks, dividends",
+        "description": "Apple Inc  on Monday capitalized on the Federal Reserve's emergency measures in response to the coronavirus outbreak to issue its cheapest bonds in years, making it the latest blue-chip company to do so to fund stock buybacks and dividends.",
+        "date": "May 04 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "New lira curbs to boost Turkish FX reserves but at longer-term price",
+        "description": "Turkey's latest squeeze of its $37 billion-a-day London lira market may succeed in boosting scarce hard currency reserves but analysts say it will not stem the lira's decline and that the country's reliance on foreign capital means it could backfire.",
+        "date": "Apr 16 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "1997 Asian Financial Crisis": {
+    "event_name": "1997 Asian Financial Crisis",
+    "start_date": "1997-07-02",
+    "end_date": "1998-12-31",
+    "crisis_type": "Currency & Banking Crisis",
+    "trigger_description": "Devaluation of the Thai baht triggering speculative runs and capital flight across East Asia",
+    "region": "East Asia",
+    "matched_news_count": 8314,
+    "headlines": [
+      {
+        "headline": "Singapore's Grab puts partnership with troubled Wirecard on hold",
+        "description": "Southeast Asian ride-hailing and payments company Grab said it had put a partnership with scandal-hit Wirecard  on hold, days after the German payments firm disclosed a $2.1 billion financial hole that threatens its future.",
+        "date": "Jun 24 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Exclusive: Exxon revives sale of stake in giant Azeri oilfield",
+        "description": "Exxon Mobil  has relaunched the sale of its stake in Azerbaijan's largest oilfield, the company said on Tuesday, as banking and industry sources said the move was drawing interest from large Asian oil and gas companies seeking to capitalize on the recent collapse in oil prices.",
+        "date": "May 19 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Thailand says new Asian trade deal to be signed in 2020",
+        "description": "Thailand said on Sunday that Southeast Asian nations are committed to signing a pact by February 2020 on forging what could become the world's largest trade bloc, even after new demands by India dealt a blow to the process backed by China.",
+        "date": "Nov 04 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "CIS-based firm Freedom Holding plans NASDAQ listing",
+        "description": "Freedom Holding Corp, a U.S. holding companies with subsidiaries that provide services to financial markets in Eastern Europe and Central Asia, has gained approval to list on New York's NASDAQ Capital Markets exchange, it said on Wednesday.",
+        "date": "Oct 02 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Grab commits $2 billion to Indonesia with SoftBank's backing",
+        "description": "Southeast Asian ride-hailing firm Grab on Monday said it will invest $2 billion into Indonesia over five years using capital from Japan's SoftBank Group Corp, marking its biggest commitment in the region's most populous market.",
+        "date": "Jul 29 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "DBS to almost double staff, triple revenue of Mideast private banking",
+        "description": "DBS , Southeast Asia's largest bank, said it would almost double its Dubai private banking staff in its bid to triple revenue for those operations in the Middle East by 2023, capitalizing on a shift of investments towards Asia.",
+        "date": "Nov 27 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Citigroup appoints Philip Drury head of EMEA investment banking: memo",
+        "description": "Citigroup Inc  named Philip Drury to run its London-based banking, capital markets and advisory business across Europe, the Middle East and Africa, according to a memo seen by Reuters.",
+        "date": "Nov 05 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "BOJ's Kuroda says Fed rate hikes good for global economy",
+        "description": "Bank of Japan Governor Haruhiko Kuroda said on Saturday steady interest rate hikes by the Federal Reserve were \"basically good\" for the world economy, shrugging off concerns that higher U.S. rates could hurt Asian economies by triggering capital outflows.",
+        "date": "Oct 13 2018",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Russian Financial Crisis": {
+    "event_name": "Russian Financial Crisis",
+    "start_date": "1998-08-17",
+    "end_date": "1999-06-01",
+    "crisis_type": "Sovereign Debt Crisis",
+    "trigger_description": "Russia defaulting on government debt and devaluing the rouble amid falling oil prices",
+    "region": "Russia / Global",
+    "matched_news_count": 13353,
+    "headlines": [
+      {
+        "headline": "For investors in Russia, U.S. sanctions will not pack the same punch as before",
+        "description": "A threat to impose sanctions on Russian sovereign debt transactions is one of the biggest financial weapons that the U.S. can deploy against the Kremlin, but Moscow's slide down the investment league table in recent years means the move will not pack the punch it once would have.",
+        "date": "Aug 03 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Occidental slashes budget, salaries in bid to cope with falling oil prices",
+        "description": "Occidental Petroleum Corp  on Wednesday unveiled a new round of deep spending cuts, slashing budget for a second time this month and sharply reducing salaries, as the debt-laden U.S. oil producer tries to save cash amid tumbling energy prices.",
+        "date": "Mar 25 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Amid Saudi-Russian oil price war, other OPEC states sound alarm",
+        "description": "While OPEC's de facto leader Saudi Arabia trades blows in a war for market share with Russia after their three-year pact to cut oil supplies collapsed last week, other OPEC states are already sounding the alarm over plunging oil prices.",
+        "date": "Mar 10 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "'Crazy inverted yield curve' vexes Fed, with no clear resolution",
+        "description": "Amid the recent financial market volatility, the interest rates on some long-dated government bonds have fallen below the level for short-term debt.",
+        "date": "Aug 15 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Volatile ruble encourages McDonald's to cook up Russian fries",
+        "description": "French fries at McDonald's restaurants from Moscow to Murmansk will be Russian from now on, as the American fast-food chain turns to homegrown potatoes to deal with rouble volatility caused by fluctuating oil prices and Western sanctions.",
+        "date": "Apr 26 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Investors in Russian bonds relaxed about extended Putin rule",
+        "description": "The prospect of President Vladimir Putin staying in the Kremlin until 2036 does not seem to be deterring buyers of Russia's high-yielding sovereign bonds as investors focus on economic fundamentals and political stability rather the risk of policy stagnation.",
+        "date": "Jul 07 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Tiffany amends debt pacts for financial leeway amid pandemic, slump in sales",
+        "description": "U.S. luxury jeweler Tiffany & Co , which is being bought by France's LVMH for $16 billion, said on Tuesday it had amended some of its debt agreements to gain more financial leeway amid the coronavirus pandemic after its quarterly sales sank 44%.",
+        "date": "Jun 09 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Forex firm Travelex to default on coupon payment",
+        "description": "Troubled currency services provider Travelex [TFPI.UL] on Wednesday warned of defaulting on a 14.4 million euro ($15.6 million) coupon payment on some of its senior notes as it grapples with a hit to earnings amid the coronavirus crisis.",
+        "date": "May 13 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Dot-com Bubble Burst": {
+    "event_name": "Dot-com Bubble Burst",
+    "start_date": "2000-03-10",
+    "end_date": "2002-10-09",
+    "crisis_type": "Stock Market Crash",
+    "trigger_description": "Speculative tech valuation bubble pop combined with monetary policy tightening",
+    "region": "Global",
+    "matched_news_count": 37070,
+    "headlines": [
+      {
+        "headline": "Wall Street's leading stocks reveal investor caution",
+        "description": "Wall Street stocks have climbed to record highs as worries over U.S.-China trade relations and the Federal Reserve's monetary policy have receded, but cautious investors have been sticking with technology shares and some defensive stocks over value stocks and more speculative plays such as IPOs.",
+        "date": "Nov 03 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Nasdaq confirms bear market; economic worries sink Wall Street",
+        "description": "Wall Street stocks fell sharply in volatile trading on Friday, with the Nasdaq confirming it is in a bear market, as concerns of slowing economic growth led investors to flee stocks in high-valuation sectors such as technology and communication services.",
+        "date": "Dec 21 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Tech stocks pull down equity markets, euro gains",
+        "description": "A gauge of global equity markets fell on Monday, pulled down by a sell-off in U.S. technology heavyweights, while the dollar slipped against the euro ahead of several central bank monetary policy meetings later this week.",
+        "date": "Jul 30 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Palantir close to registering for stock market debut: sources",
+        "description": "Data mining firm Palantir Technologies Inc is aiming to file confidentially with U.S. regulators to go public in the coming weeks, emboldened by the strong performance of other initial public offerings (IPOs), people familiar with the matter said.",
+        "date": "Jun 11 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Brazil set to start QE cautiously but may need to bring out 'bazooka'",
+        "description": "Brazil appears set to embark cautiously on unconventional monetary policy using small interventions to tackle dysfunction in bond markets, as it does with foreign exchange, but the severity of the crisis may ultimately force it to emulate the dramatic steps taken in the United States and Europe.",
+        "date": "Apr 20 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street ends higher to stem coronavirus sell-off",
+        "description": "U.S. stocks managed to post gains on Thursday after recent steep losses as policymakers around the world took further emergency actions to try to help financial markets cope with deep coronavirus-driven economic damage.",
+        "date": "Mar 19 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Merged T-Mobile U.S. to close valuation gap on Big Two: Deutsche Telekom CEO",
+        "description": "The merger between T-Mobile US  and Sprint  is within reach, the head of its main owner Deutsche Telekom said, forecasting that the combined business would quickly close a valuation gap on market leaders AT&T  and Verizon .",
+        "date": "Feb 19 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "With Tesla stock envy, GM hopes to sell investors on its EV, tech future",
+        "description": "General Motors Co  has watched with frustration and envy as the market value of electric carmaker Tesla Inc  has ballooned to about two and a half times GM's size, but on Wednesday the Detroit automaker made the case that its EV and self-driving technology strategy deserves a higher value.",
+        "date": "Feb 05 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Argentine Economic Crisis": {
+    "event_name": "Argentine Economic Crisis",
+    "start_date": "2001-12-01",
+    "end_date": "2002-12-31",
+    "crisis_type": "Sovereign Debt Crisis",
+    "trigger_description": "Argentina defaulting on $93B sovereign debt and abandoning peso-dollar peg",
+    "region": "Argentina / Latin America",
+    "matched_news_count": 125089,
+    "headlines": [
+      {
+        "headline": "S&P calls Argentine's debt maturity extension a 'default'",
+        "description": "Ratings agency Standard & Poor's said on Thursday that Argentina's decision to \"unilaterally\" extend maturities on its short-term debt constituted a \"default,\" and warned that the country's local and foreign currency sovereign credit ratings were now in \"selective default.\"",
+        "date": "Aug 29 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Quarantined bankers, video roadshows: coronavirus hits Argentine debt talks",
+        "description": "Argentina's ambitious target to strike a deal with bondholders to revamp almost $70 billion in debts by the end of March was never going to be easy. Now a coronavirus outbreak and crashing bond markets threaten to complicate things further.",
+        "date": "Mar 16 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Argentina says to extend maturities of international bonds, IMF debt",
+        "description": "Argentina will negotiate with holders of its sovereign bonds and the International Monetary Fund to extend the maturities of its debt obligations as a way of ensuring the country's ability to pay, Treasury Minister Hernan Lacunza said on Wednesday.",
+        "date": "Aug 29 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Uber's strongest growth comes in depressed Argentina -- minus commissions",
+        "description": "Uber's fastest-growing market in the world is now Argentina, company executives say, attributing the expansion to the nation's sudden economic unraveling, which has boosted unemployment and sliced the purchasing power of Argentines.",
+        "date": "Sep 25 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. stocks drop on fear of escalated trade spat; Argentine peso roiled",
+        "description": "The rally in U.S. stocks came to a halt on Thursday on new concerns that the U.S.-Chinese trade dispute will intensify, while economic turmoil in Argentina and Turkey sent those countries' currencies tumbling.",
+        "date": "Aug 30 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Argentina Claims Debt Agreement A World First",
+        "description": "Global news report on economic developments: Argentina Claims Debt Agreement A World First",
+        "date": "Sep 21 2003",
+        "source": "ABC News Archive"
+      },
+      {
+        "headline": "Argentina Unconcerned About 18B Foreign Debt",
+        "description": "Global news report on economic developments: Argentina Unconcerned About 18B Foreign Debt",
+        "date": "Dec 24 2007",
+        "source": "ABC News Archive"
+      },
+      {
+        "headline": "Australia Close To Defaulting On Debts Joyce",
+        "description": "Global news report on economic developments: Australia Close To Defaulting On Debts Joyce",
+        "date": "Feb 09 2010",
+        "source": "ABC News Archive"
+      }
+    ]
+  },
+  "2008 Great Financial Crisis": {
+    "event_name": "2008 Great Financial Crisis",
+    "start_date": "2007-08-09",
+    "end_date": "2009-06-30",
+    "crisis_type": "Systemic Financial Crisis",
+    "trigger_description": "Subprime mortgage defaults leading to liquidity dry-ups and major investment bank collapses",
+    "region": "Global",
+    "matched_news_count": 16117,
+    "headlines": [
+      {
+        "headline": "Goldman Sachs must face class action over conflicts of interest, risky mortgages",
+        "description": "Goldman Sachs Group Inc must face a shareholder class action accusing the bank of hiding conflicts of interest, including behind-the-scenes dealings with a prominent hedge fund manager, when creating risky subprime securities before the 2008 financial crisis.",
+        "date": "Apr 07 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "GE's WMC Mortgage unit, felled by financial crisis, files Chapter 11 bankruptcy",
+        "description": "General Electric Co on Tuesday put the remnants of its WMC Mortgage unit into bankruptcy, 11 days after paying a $1.5 billion U.S. fine over defective subprime mortgages issued by WMC before the 2008 financial crisis.",
+        "date": "Apr 23 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. sues UBS, alleges crisis-era mortgage securities fraud",
+        "description": "The U.S. government on Thursday filed a civil fraud lawsuit accusing UBS Group AG , Switzerland's largest bank, of defrauding investors in its sale of residential mortgage-backed securities leading up to the 2008-09 global financial crisis.",
+        "date": "Nov 08 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "As big U.S. banks let customers delay payments, loan losses remain unclear",
+        "description": "Major U.S. bank executives this week said they extended forbearance programs to millions of credit card, auto loan and mortgage customers who were financially hard hit by the coronavirus pandemic.",
+        "date": "Jul 17 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Fed announces more emergency moves to stem dollar, liquidity strains",
+        "description": "The U.S. Federal Reserve continued to roll out emergency support on Friday as it enhanced efforts with other major central banks to ease a global dollar-funding crunch, backstopped a market essential for U.S. state and local government finances and ramped up its purchases of mortgage-backed securities.",
+        "date": "Mar 20 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "FX collusion scandal reaches Australia, class action launched",
+        "description": "An Australian law firm filed a class action lawsuit on Monday against five major international investment banks accusing them of colluding to rig foreign exchange rates during 2008-2013 to jack up profits at the expense of businesses and investors.",
+        "date": "May 26 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Morgan Stanley to pay $150 million to settle California crisis-era mortgage charges",
+        "description": "Morgan Stanley will pay $150 million to settle charges it misled two large California public pension funds about the risks of mortgage-backed securities they bought in the years leading up to the 2008 global financial crisis.",
+        "date": "Apr 25 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "GE to pay $1.5 billion U.S. fine over crisis-era subprime mortgages",
+        "description": "General Electric Co will pay a $1.5 billion civil fine to resolve a long-running U.S. probe into defective subprime mortgages from its former WMC Mortgage unit prior to the 2008 global financial crisis.",
+        "date": "Apr 12 2019",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Eurozone Debt Crisis": {
+    "event_name": "Eurozone Debt Crisis",
+    "start_date": "2009-12-08",
+    "end_date": "2015-08-20",
+    "crisis_type": "Sovereign Debt Crisis",
+    "trigger_description": "Sovereign debt defaults and credit rating downgrades of southern European countries",
+    "region": "Europe / Eurozone",
+    "matched_news_count": 6333,
+    "headlines": [
+      {
+        "headline": "Credit markets flash red as coronavirus hits corporate America",
+        "description": "From airlines and cruise lines to retailers and energy companies, investors are fleeing large pockets of the corporate credit market, worried that the coronavirus pandemic will lead to bankruptcies, defaults and credit rating downgrades.",
+        "date": "Mar 19 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Junk loan market tensions signal end of buyout-led binge",
+        "description": "Many investors are shunning the riskiest corners of the junk-rated U.S. corporate loan market because of concerns about possible credit rating downgrades, putting the brakes on a run of leveraged buyouts and debt-funded dividends.",
+        "date": "Nov 20 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "S&P calls Argentine's debt maturity extension a 'default'",
+        "description": "Ratings agency Standard & Poor's said on Thursday that Argentina's decision to \"unilaterally\" extend maturities on its short-term debt constituted a \"default,\" and warned that the country's local and foreign currency sovereign credit ratings were now in \"selective default.\"",
+        "date": "Aug 29 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Trade war won't trigger Asian credit ratings downgrades, for now: Fitch",
+        "description": "Fitch Ratings has maintained its stable credit outlook for all Asian countries, except Pakistan, despite expecting some \"dampening effect\" in the region due to the U.S.-China trade tensions, senior ratings analysts said on Saturday.",
+        "date": "Oct 13 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Moody's downgrades Turkey to Ba3, assigns negative outlook",
+        "description": "Moody's cut Turkey's sovereign credit rating deeper into \"junk\" territory on Friday, citing a weakening of public institutions and the related reduction in the predictability of policy making in a country which is facing a currency crisis.",
+        "date": "Aug 17 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "S&P cuts Japan's debt outlook as spending surges during pandemic",
+        "description": "S&P Global Ratings on Tuesday lowered its outlook on Japan's sovereign debt rating to stable from positive, citing increased uncertainty over the country's fiscal health as it boosts spending to overcome the effects of the coronavirus pandemic.",
+        "date": "Jun 09 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Global remittances could fall by $100 billion in 2020, says Citi",
+        "description": "Slower economic growth expectations prompted Citi on Monday to slash its forecasts for global remittances, saying this raised the risk to credit ratings of smaller emerging market countries and was set to push up their borrowing costs.",
+        "date": "Jun 01 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Euro gains on EU recovery-fund plan, oil wavers",
+        "description": "The euro and European government debt rallied on Tuesday, lifted by a Franco-German proposal to fund grants for regions hit hardest by the coronavirus pandemic, while oil traded mostly higher on growing demand as countries eased business lockdowns.",
+        "date": "May 19 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "2014-16 Oil Price Collapse": {
+    "event_name": "2014-16 Oil Price Collapse",
+    "start_date": "2014-06-20",
+    "end_date": "2016-02-11",
+    "crisis_type": "Commodity/Energy Crisis",
+    "trigger_description": "OPEC maintaining production amid oversupply and weakening China demand crashing oil from $115 to $26",
+    "region": "Global",
+    "matched_news_count": 23101,
+    "headlines": [
+      {
+        "headline": "Oil falls 1% as demand fears outweigh hopes for bigger OPEC+ cuts",
+        "description": "Oil prices sank about 1% on Tuesday as fears that energy demand would take a long-term hit from the growing coronavirus outbreak outweighed hopes for more production cuts from OPEC and its allies.",
+        "date": "Feb 04 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Oil falls on China-U.S. tensions, energy demand doubts",
+        "description": "Oil prices tumbled about 2% on Friday on rising U.S.-China tensions and doubts about how quickly fuel demand would recover from the coronavirus crisis.",
+        "date": "May 22 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Exclusive: Argentina plans higher local oil price to protect sector amid rout - sources",
+        "description": "Argentina plans to issue a decree setting a higher local oil barrel price to protect the domestic industry from being further decimated by a collapse in global prices and slumping fuel demand due to the coronavirus pandemic, two industry sources told Reuters on Thursday.",
+        "date": "Apr 23 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "China virus fears spook U.S. shares, oil prices",
+        "description": "U.S. shares and crude prices fell sharply on Friday as investors moved into safe-haven assets amid concerns that a spreading virus from China would curb travel and hurt economic demand.",
+        "date": "Jan 24 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Oil slides 2% as glut forecast, China virus overshadow Libya disruption",
+        "description": "Oil prices fell more than 2% on Wednesday as a market surplus forecast by the International Energy Agency (IEA) and demand worries amid the outbreak of a virus in China outweighed concern over disruptions to Libya's crude output.",
+        "date": "Jan 22 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Oil rises as Libya declares force majeure in oilfields",
+        "description": "Oil prices rose to their highest in more than a week on Monday after two large crude production bases in Libya began shutting down amid a military blockade, risking reducing crude flows from the OPEC member to a trickle.",
+        "date": "Jan 20 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. energy shareholders seek to leave behind a lost decade",
+        "description": "The 2010s was a lost decade for shares of U.S. energy companies overall. Volatile commodity prices amid growing supply, poor  financial performance and disfavor from some investor groups all contributed to the energy sector's transformation from investor darling to investor outcast.",
+        "date": "Dec 27 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Oil rises on U.S.-China trade hopes, still below three-month highs",
+        "description": "Oil prices rose slightly Monday on hopes energy demand will benefit from the trade deal between the United States and China announced last week, but prices remained below the previous session's three-month highs.",
+        "date": "Dec 16 2019",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Chinese Stock Market Crash": {
+    "event_name": "Chinese Stock Market Crash",
+    "start_date": "2015-06-12",
+    "end_date": "2016-02-29",
+    "crisis_type": "Stock Market Crash",
+    "trigger_description": "Chinese equity bubble burst with Shanghai Composite losing 49% amid margin call cascades",
+    "region": "China / Global",
+    "matched_news_count": 40916,
+    "headlines": [
+      {
+        "headline": "Oil, stocks gain, but rising infection rates spark concerns",
+        "description": "Crude oil prices and a gauge of global equity markets edged higher on Monday as lockdowns eased, with the Nasdaq setting a record closing high, but sentiment remained tenuous as coronavirus infections continued to rise.",
+        "date": "Jun 22 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Global stocks hit record as rally enters new year, dollar rebounds",
+        "description": "Global stock markets jumped on the first day of trading in 2020 as a shot of Chinese stimulus and economic data drove a gauge of world equity performance to the latest in a series of record highs, while the dollar snapped a four-day losing streak.",
+        "date": "Jan 02 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Global shares inch to new highs on trade hopes; dollar little changed",
+        "description": "The dollar traded little changed while equity markets added to a year-end rally on Monday, with both a gauge of stock performance worldwide and Wall Street hitting new highs amid renewed optimism over U.S.-China trade and growth prospects.",
+        "date": "Dec 23 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Sterling falls on new Brexit fears, stocks edge higher",
+        "description": "The dollar rose on Tuesday amid concerns about a hard deadline for Britain to reach a new trade deal with the European Union, while global equity markets edged higher, lifted by a resurgent U.S. housing market that bodes well for the economy.",
+        "date": "Dec 17 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Doing a Buffett? Bet on S&P 500 causes flap on options market",
+        "description": "An anonymous trader caused a stir in the U.S. equity options market on Monday with a massive bet that recalled Warren Buffett's famous wager on global stocks more than a decade ago.",
+        "date": "Jan 14 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. equity markets not taking their cues from high-yield junk bonds",
+        "description": "A long-reliable warning signal for stock investors that the tide is about to turn against them briefly flashed caution amid last month's sell-off but does not appear to be calling an end to the bull market just yet.",
+        "date": "Nov 12 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Rising U.S. coronavirus cases slam stocks, push debt yields lower",
+        "description": "Government debt yields and global equity markets fell on Thursday as a growing number of U.S. coronavirus cases weighed on risk sentiment, which was also hurt by deteriorating U.S.-China relations and discouraging Chinese data.",
+        "date": "Jul 16 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Global stocks succumb to shutdown fears but China charges on",
+        "description": "Equity markets slid on Thursday after U.S. data raised worries about the economy's recovery and doused enthusiasm that drove a Chinese stock rally for an eighth straight day, while the dollar rebounded as new coronavirus cases hit another record.",
+        "date": "Jul 09 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Brexit Referendum Shock": {
+    "event_name": "Brexit Referendum Shock",
+    "start_date": "2016-06-23",
+    "end_date": "2016-07-08",
+    "crisis_type": "Political/Geopolitical Crisis",
+    "trigger_description": "UK voting to leave the EU causing immediate market shock and sterling crash",
+    "region": "United Kingdom / Europe",
+    "matched_news_count": 20431,
+    "headlines": [
+      {
+        "headline": "World stocks rebound, Brexit blow-up levels sterling",
+        "description": "A gauge of global stocks climbed on Thursday after five sessions of declines as Wall Street surged on trade optimism, while sterling tumbled as political developments in Britain rippled through markets.",
+        "date": "Nov 15 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Stocks waver on rising COVID cases, dollar in safety bidding",
+        "description": "Global equity markets closed little changed on Wednesday as a rally on economic and vaccine hopes faded, while fresh coronavirus outbreaks and rising geopolitical tensions in Asia boosted demand for the dollar and safe-haven debt.",
+        "date": "Jun 17 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Defying gravity? What could bring U.S. stocks down to earth",
+        "description": "The U.S. stock market's relentless drive higher has caused some nail-biting on Wall Street that the rally is about to end. Geopolitical risks \u2013 such as the latest escalation of U.S. tensions with Iran - are just one on a list of worries for 2020.",
+        "date": "Jan 06 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Stocks extend record rally, sterling endures rough week",
+        "description": "A year-end rally in global equity markets extended gains on Friday, helped by data showing relatively strong U.S. growth, while sterling posted its worst week in more than two years on concerns over how Britain will leave the European Union.",
+        "date": "Dec 20 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Sterling falls on new Brexit fears, stocks edge higher",
+        "description": "The dollar rose on Tuesday amid concerns about a hard deadline for Britain to reach a new trade deal with the European Union, while global equity markets edged higher, lifted by a resurgent U.S. housing market that bodes well for the economy.",
+        "date": "Dec 17 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street slips as weak economic data offsets earnings strength",
+        "description": "Wall Street lost ground on Wednesday as weak U.S. economic data and simmering geopolitical tensions spooked buyers away from the equities market, despite a string of generally positive third-quarter earnings reports.",
+        "date": "Oct 16 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Stocks flat on data, earnings; pound volatile",
+        "description": "A gauge of world stock markets was flat on Wednesday as U.S. data that raised concerns about a slowing economy was offset by a solid start to earnings season, while sterling was volatile as negotiations on a Brexit deal continued.",
+        "date": "Oct 16 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street falls on geopolitical tensions, recession fears",
+        "description": "U.S. stocks dropped in a broad sell-off on Monday as simmering geopolitical tensions spooked equity investors and drove a bond market rally while the protracted U.S.-China trade war stoked fears of impending recession.",
+        "date": "Aug 12 2019",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "2018 Crypto Crash": {
+    "event_name": "2018 Crypto Crash",
+    "start_date": "2018-01-06",
+    "end_date": "2018-12-15",
+    "crisis_type": "Asset Bubble Crash",
+    "trigger_description": "Bitcoin crashing 84% from $20K to $3.2K as crypto speculation bubble deflated",
+    "region": "Global",
+    "matched_news_count": 11317,
+    "headlines": [
+      {
+        "headline": "Daily bitcoin transactions on darknet markets doubled throughout 2018: report",
+        "description": "Use of bitcoin as a form of payment doubled in 2018 on darknet market sites, where users can buy anything from illegal drugs to fake IDs, even though the price of the cryptocurrency crashed, according to a study by data firm Chainalysis.",
+        "date": "Jan 18 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Bitcoin slips below $8,000 as investors step away from risk",
+        "description": "Bitcoin briefly fell below $8,000 on Monday as investors scaled back their exposure to cryptocurrenices, after a sell-off in shares of technology and internet companies spilled over into other risky assets.",
+        "date": "Jul 30 2018",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Crypto-market infrastructure creaks amid volatility test",
+        "description": "As worries over the economic hit from the coronavirus outbreak spread from stocks, oil and bonds to cryptocurrencies late last week, bitcoin crashed to its worst day in seven years. But plummeting prices weren't the only problem for investors.",
+        "date": "Mar 19 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street sell-off batters bitcoin, pounds palladium as investors go to cash",
+        "description": "Crushing asset sell-offs ranging from bitcoin to precious metals and European stocks accompanied Wall Street's slide into bear market territory on Thursday, as investors liquidated positions across their portfolios to raise cash.",
+        "date": "Mar 12 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street Week Ahead: Bond fund managers see risk Fed cuts rates to zero",
+        "description": "Speculation the Federal Reserve will continue cutting interest rates well past its policy meeting next week is pushing some bond fund managers into assets ranging from short-term Treasury bills to half-paid off 15-year home mortgages.",
+        "date": "Oct 25 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "British judge orders confiscation of $1 million in cryptocurrencies from jailed hacker",
+        "description": "A London judge ordered on Friday the confiscation of bitcoin and other digital currencies worth nearly $1 million from a prolific computer hacker, in the first case of its kind for Britain's biggest police force.",
+        "date": "Aug 23 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Bitcoin slumps to two-week low on technical trading, market jitters",
+        "description": "Bitcoin extended losses on Thursday after suffering its worst day for a month on Wednesday, with traders citing factors ranging from technical trading to jitters in traditional markets washing into cryptocurrency trading.",
+        "date": "Aug 15 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "UK markets watchdog proposes retail ban on crypto derivatives",
+        "description": "Britain's markets watchdog is proposing banning the sale of derivatives based on crypto-assets to retail consumers from early 2020 due to what it considers the prevalence of market abuses.",
+        "date": "Jul 03 2019",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "US-China Trade War Escalation": {
+    "event_name": "US-China Trade War Escalation",
+    "start_date": "2018-03-22",
+    "end_date": "2020-01-15",
+    "crisis_type": "Political/Geopolitical Crisis",
+    "trigger_description": "Escalating tariffs between US and China disrupting global supply chains and dampening growth",
+    "region": "Global",
+    "matched_news_count": 13438,
+    "headlines": [
+      {
+        "headline": "Without a China trade deal, the U.S. will hike tariffs: Trump",
+        "description": "The United States would raise tariffs on Chinese imports if no  deal is reached with Beijing to end a trade war, U.S. President Donald Trump said on Tuesday, threatening an escalation of the spat that has damaged economic growth worldwide.",
+        "date": "Nov 19 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "China to fight back against U.S. tariff move: People's Daily",
+        "description": "China will fight back against the latest U.S. step to increase tariffs on Chinese goods, the ruling Communist Party's People's Daily said on Sunday amid an escalating trade war between the world's two largest economies.",
+        "date": "Aug 25 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Factbox: From phone makers to farmers, the toll of Trump's trade wars",
+        "description": "The world's two largest economies, China and the United States, on Friday exchanged blows in the latest escalation in their trade war that has roiled supply chains and whipsawed financial markets.",
+        "date": "Aug 23 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Key dates in the U.S.-China trade war",
+        "description": "Hopes for settlement of the yearlong U.S.-China trade war dimmed further on Friday as China said it will slap retaliatory tariffs on about $75 billion worth of U.S. goods, the latest escalation in the dispute between the world's two largest economies.",
+        "date": "Aug 23 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Oil prices slide as U.S.-China trade war escalates",
+        "description": "Oil prices fell on Friday after China unveiled retaliatory tariffs against about $75 billion worth of U.S. goods including crude oil, another escalation of a protracted trade dispute between the world's two largest economies.",
+        "date": "Aug 23 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. hiring slows; shorter factory workweek a red flag",
+        "description": "U.S. job growth slowed in July and manufacturers slashed hours for workers, which together with an escalation in trade tensions between the United States and China could give the Federal Reserve ammunition to cut interest rates again next month.",
+        "date": "Aug 02 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "June imports fall at top U.S. hub for China ocean trade",
+        "description": "The Los Angeles and Long Beach port complex, the nation's busiest and the No. 1 for ocean trade with China, - handled 5.1%fewer inbound containers of cargo in June, as the trade standoff between Washington and Beijing disrupts global supply chains.",
+        "date": "Jul 11 2019",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "G20 finance chiefs express concern over risks from 'intensified' trade conflict",
+        "description": "Group of 20 finance leaders on Sunday said that trade and geopolitical tensions have \"intensified\", raising risks to improving global growth, but they stopped short of calling for a resolution of a deepening U.S.-China trade conflict.",
+        "date": "Jun 09 2019",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "2020 COVID-19 Crash": {
+    "event_name": "2020 COVID-19 Crash",
+    "start_date": "2020-02-20",
+    "end_date": "2020-04-07",
+    "crisis_type": "Pandemic / Economic Shock",
+    "trigger_description": "Global lockdowns and pandemic panic triggering extreme stock volatility and oil price drops",
+    "region": "Global",
+    "matched_news_count": 132329,
+    "headlines": [
+      {
+        "headline": "Global stocks edge lower on economic toll from coronavirus, oil rallies",
+        "description": "Global stock markets sank on Friday following more signs that the COVID-19 pandemic would take a massive toll on economic growth, while oil prices continued to rally on hopes of a cut to global supply.",
+        "date": "Apr 03 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "World shares end stellar quarter but still down in 2020",
+        "description": "A global stocks index rose on Tuesday and marked its largest quarterly gain since 2009 as investors continued to look for signs of an economic recovery while shrugging off data showing a rising number of COVID-19 cases.",
+        "date": "Jun 30 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Global stock markets sink as U.S. virus concerns offset Europe rebound hopes",
+        "description": "Global equities sank and perceived safe-haven assets like U.S. Treasuries and gold gained on Friday as investors weighed hopes that Europe will continue to rebound from the coronavirus pandemic's economic damage against concerns over a record surge in new COVID-19 infections in the United States.",
+        "date": "Jun 26 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Investors warm to Europe as Biden lead, virus fears rattle Wall Street",
+        "description": "European stocks look poised to make up ground on Wall Street in the second half of 2020 as Joe Biden consolidates his lead over Donald Trump ahead of the November U.S. presidential election and a surge of new COVID-19 cases threatens the U.S. economic recovery.",
+        "date": "Jun 26 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "S&P closes lower as new COVID-19 cases surge",
+        "description": "The S&P 500 closed lower on Wednesday as news of spiking pandemic data and the prospect of a new round of economic lockdowns dampened investor optimism over signs of economic recovery.",
+        "date": "Jun 17 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Equities cruise to three-month highs, dollar under protest pressure",
+        "description": "World stock markets hit their highest levels since March and oil prices jumped on Tuesday as signs of a global economic recovery from the coronavirus pandemic offset concerns over the worst civil unrest in the United States in decades.",
+        "date": "Jun 02 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Warner Music kicks off $1.8 billion Nasdaq IPO",
+        "description": "Warner Music Group said on Tuesday it is aiming to sell up to $1.82 billion in stock in its U.S. initial public offering, potentially the largest New York IPO so far in 2020 as the market for new stocks rebounds after the COVID-19 pandemic put many debuts on hold.",
+        "date": "May 26 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Hedge funds increased exposure to growth favorites in first quarter: Goldman",
+        "description": "Hedge funds concentrated their portfolios even further into growth stocks including Amazon.com Inc  and Microsoft Corp  in the first quarter of 2020 as the COVID-19 pandemic pummeled U.S. markets, Goldman Sachs analysts said in a report.",
+        "date": "May 22 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  },
+  "Great Depression (1929)": {
+    "event_name": "Great Depression (1929)",
+    "start_date": "1929-10-24",
+    "end_date": "1939-09-01",
+    "crisis_type": "Economic Depression",
+    "trigger_description": "Wall Street crash of 1929 leading to widespread banking failures and industrial contraction",
+    "region": "Global",
+    "matched_news_count": 127770,
+    "headlines": [
+      {
+        "headline": "Wall Street closes up on signs of economic rebound",
+        "description": "A late-session rally pushed Wall Street to solid gains on Tuesday as market participants looked past widespread social unrest and pandemic worries to focus instead on easing lockdown restrictions and signs of economic recovery.",
+        "date": "Jun 02 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street and Fed fly blind as coronavirus upends annual stress tests",
+        "description": "U.S. financial regulators, banks and their investors will get their first glimpse into the health of the nation's banking system as it confronts soaring corporate and consumer defaults in the economic crisis sparked by the novel coronavirus.",
+        "date": "Jun 01 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Coronavirus hammers U.S. homebuilding; permits tumble",
+        "description": "U.S. homebuilding dropped by the most on record in April and permits for future construction tumbled, underlining fears that the coronavirus crisis would lead to the deepest economic contraction in the second quarter since the Great Depression.",
+        "date": "May 19 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "U.S. housing starts fall sharply in April",
+        "description": "U.S. homebuilding dropped to a five-year low in April, underlining fears that the novel coronavirus crisis would lead to the deepest economic contraction in the second quarter since the Great Depression.",
+        "date": "May 19 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Coronavirus pummels U.S. retail sales, industrial production",
+        "description": "U.S. retail sales endured a second straight month of record declines in April as the novel coronavirus pandemic kept Americans at home, putting the economy on track for its biggest contraction in the second quarter since the Great Depression.",
+        "date": "May 15 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street down on flight from techs; move to value limits loss on Dow, S&P 500",
+        "description": "Wall Street's major indexes lost ground on Tuesday as investors moved out of market-leading growth stocks, though a rotation into cyclical value stocks indicated hopes of economic revival as states began to relax restrictions enacted to fight the deadly COVID-19 pandemic.",
+        "date": "Apr 28 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Wall Street tells Trump financial system strong, ready to support borrowers",
+        "description": "The U.S. banking industry is strong and ready to help businesses and consumers weather economic fallout from the fast-spreading coronavirus, Wall Street chief executives told President Donald Trump during a meeting at the White House on Wednesday.",
+        "date": "Mar 11 2020",
+        "source": "Reuters Financial"
+      },
+      {
+        "headline": "Dow suffers record decline in points as Wall Street leads global stocks lower",
+        "description": "The Dow industrials posted the largest-ever points drop on Thursday as Wall Street led stocks across the globe lower, with traders fretting over the economic impact of the spreading coronavirus.",
+        "date": "Feb 27 2020",
+        "source": "Reuters Financial"
+      }
+    ]
+  }
+}
