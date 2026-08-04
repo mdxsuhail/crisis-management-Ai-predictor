@@ -1,0 +1,97 @@
+================================================================================
+          CRISIS MANAGEMENT LLM AI PREDICTOR — 100% FREE GUIDE
+================================================================================
+
+This application is 100% FREE to use. It runs fully offline or online using a 
+built-in Local Smart AI Reasoning Engine and trained Machine Learning models. 
+No paid API keys, subscriptions, or external cloud services are required.
+
+--------------------------------------------------------------------------------
+1. QUICK START (ONE-CLICK LAUNCH)
+--------------------------------------------------------------------------------
+
+Option A: Run the Batch Launcher (Windows)
+   Double-click `run_app.bat` or open PowerShell/Terminal and run:
+   > .\run_app.bat
+
+Option B: Run manually via Terminal
+   1. Install required dependencies:
+      > pip install -r requirements.txt
+
+   2. Clean and merge raw datasets:
+      > python clean_and_merge.py
+
+   3. Calculate historical crisis impact metrics:
+      > python analyze_crises.py
+
+   4. Train Machine Learning model on historical dataset:
+      > python ml_predictor.py
+
+   5. Launch the Streamlit Web Application:
+      > streamlit run app.py
+
+   The application will open automatically in your browser at:
+   http://localhost:8501
+
+--------------------------------------------------------------------------------
+2. DATASETS INCLUDED & USED
+--------------------------------------------------------------------------------
+
+The AI Predictor uses 6 real-world financial and macroeconomic datasets:
+
+1. `dataset/crisis_events.csv`: Pre-filled template of 20 major historical crises 
+   (1929 Great Depression, 1973 Oil Shock, 1987 Black Monday, 2000 Dot-com, 
+   2008 GFC, 2020 COVID-19 Crash, etc.) with start/end dates, regions, and triggers.
+
+2. `dataset/all_stocks_5yr.csv`: S&P 500 stock prices (daily OHLCV data).
+
+3. `dataset/BrentOilPrices.csv`: Daily crude oil prices from 1987 to 2022.
+
+4. `dataset/african_crises.csv`: Systemic banking, debt, inflation, and currency 
+   crises dataset across 13 countries.
+
+5. `dataset/Covid-19 economy impact .csv`: Cross-sectional consumption, investment, 
+   tourism decline, stringency index, and mobility data across 27 countries.
+
+6. `dataset/world_bank_development_indicators.csv`: Global GDP, inflation rates, 
+   real interest rates, and governance metrics.
+
+7. `dataset/abcnews-date-text.csv`: 1.2M+ news headlines from 2003 to 2020 for keyword 
+   trend & headline peak analysis.
+
+--------------------------------------------------------------------------------
+3. HOW THE AI & MACHINE LEARNING MODEL WORKS
+--------------------------------------------------------------------------------
+
+- Data Pipeline (`clean_and_merge.py`): Combines 11,000+ daily observations into a 
+  unified macroeconomic timeline saved to `processed/clean_data.csv`.
+
+- ML Model Training (`ml_predictor.py`): Fits Gradient Boosting Regressors and 
+  Random Forest Classifiers on the historical timeline. It learns how market 
+  volatility, oil price momentum, inflation, debt defaults, and news spikes 
+  predict future 6-month & 12-month market returns, oil price shifts, and 
+  recession probabilities.
+
+- Built-In LLM AI Engine (`llm_engine.py`): Analyzes your scenario input, combines 
+  it with top matched historical crisis analogs and ML quantitative forecasts, 
+  and generates a complete Executive AI Risk Assessment Report (100% Free).
+
+--------------------------------------------------------------------------------
+4. COMMAND-LINE INTERFACE (CLI)
+--------------------------------------------------------------------------------
+
+You can also run similarity matching and ML predictions directly in the terminal:
+> python find_similar_crises.py "oil price shock, high inflation, interest rate hike"
+
+--------------------------------------------------------------------------------
+5. FREQUENTLY ASKED QUESTIONS (FAQ)
+--------------------------------------------------------------------------------
+
+Q: Is an OpenAI / Gemini API key required?
+A: No! The app defaults to "Local Smart AI Engine (100% Free)", which works 
+   completely offline without any API keys. If you happen to have an OpenAI key, 
+   you can optionally enter it in the sidebar.
+
+Q: How do I update or retrain the machine learning model?
+A: Simply run `python ml_predictor.py` whenever you add new dataset records.
+================================================================================
