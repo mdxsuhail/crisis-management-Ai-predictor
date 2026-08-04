@@ -1,10 +1,21 @@
 event_name,start_date,end_date,crisis_type,trigger_description,region
 1973 Oil Shock,1973-10-16,1974-03-18,Commodity/Energy Crisis,OPEC oil embargo in response to Western support for Israel in the Yom Kippur War,Global / Middle East
+1979 Energy Crisis,1979-01-01,1980-12-31,Commodity/Energy Crisis,Iranian Revolution and Iran-Iraq War causing global oil supply disruption and price doubling,Global / Middle East
+Latin American Debt Crisis,1982-08-01,1990-12-31,Sovereign Debt Crisis,Mexico defaulting on sovereign debt triggering cascading defaults across Latin America,Latin America
 Black Monday (1987),1987-10-19,1987-10-20,Stock Market Crash,Sudden market downturn accelerated by program trading and panic selling,Global
+Japanese Asset Bubble Burst,1991-01-01,2001-12-31,Banking Crisis,Collapse of Japanese stock and real estate bubble causing prolonged banking crisis and deflation,Japan / East Asia
 1992 Black Wednesday,1992-09-16,1992-09-17,Currency Crisis,Speculative attack on the British pound forcing its withdrawal from the European Exchange Rate Mechanism,United Kingdom / Europe
+Mexican Peso Crisis (Tequila),1994-12-20,1995-11-01,Currency Crisis,Sudden devaluation of the Mexican peso triggering capital flight and emergency IMF bailout,Mexico / Latin America
 1997 Asian Financial Crisis,1997-07-02,1998-12-31,Currency & Banking Crisis,Devaluation of the Thai baht triggering speculative runs and capital flight across East Asia,East Asia
+Russian Financial Crisis,1998-08-17,1999-06-01,Sovereign Debt Crisis,Russia defaulting on government debt and devaluing the rouble amid falling oil prices,Russia / Global
 Dot-com Bubble Burst,2000-03-10,2002-10-09,Stock Market Crash,Speculative tech valuation bubble pop combined with monetary policy tightening,Global
+Argentine Economic Crisis,2001-12-01,2002-12-31,Sovereign Debt Crisis,Argentina defaulting on $93B sovereign debt and abandoning peso-dollar peg,Argentina / Latin America
 2008 Great Financial Crisis,2007-08-09,2009-06-30,Systemic Financial Crisis,Subprime mortgage defaults leading to liquidity dry-ups and major investment bank collapses,Global
 Eurozone Debt Crisis,2009-12-08,2015-08-20,Sovereign Debt Crisis,Sovereign debt defaults and credit rating downgrades of southern European countries,Europe / Eurozone
+2014-16 Oil Price Collapse,2014-06-20,2016-02-11,Commodity/Energy Crisis,OPEC maintaining production amid oversupply and weakening China demand crashing oil from $115 to $26,Global
+Chinese Stock Market Crash,2015-06-12,2016-02-29,Stock Market Crash,Chinese equity bubble burst with Shanghai Composite losing 49% amid margin call cascades,China / Global
+Brexit Referendum Shock,2016-06-23,2016-07-08,Political/Geopolitical Crisis,UK voting to leave the EU causing immediate market shock and sterling crash,United Kingdom / Europe
+2018 Crypto Crash,2018-01-06,2018-12-15,Asset Bubble Crash,Bitcoin crashing 84% from $20K to $3.2K as crypto speculation bubble deflated,Global
+US-China Trade War Escalation,2018-03-22,2020-01-15,Political/Geopolitical Crisis,Escalating tariffs between US and China disrupting global supply chains and dampening growth,Global
 2020 COVID-19 Crash,2020-02-20,2020-04-07,Pandemic / Economic Shock,Global lockdowns and pandemic panic triggering extreme stock volatility and oil price drops,Global
 Great Depression (1929),1929-10-24,1939-09-01,Economic Depression,Wall Street crash of 1929 leading to widespread banking failures and industrial contraction,Global
